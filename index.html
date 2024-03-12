@@ -8,6 +8,8 @@
 </head>
 <body>
     <script>
+
+
         const parent = document.createElement('div');
         parent.id = 'parent';
         document.body.appendChild(parent);
@@ -24,6 +26,17 @@
         CloseButton.id = 'CloseButton';
         CloseButton.textContent = 'X';
         parent.appendChild(CloseButton);
+
+        //Adding JQuery to DOM
+        const JQuery = document.createElement('script');
+        JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
+        head.appendChild(JQuery);
+
+        //Adding CSS file to DOM
+        const CustomCSS = document.createElement('link');
+        CustomCSS.rel = 'stylesheet';
+        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/styles.css';
+        head.appendChild(CustomCSS);
 
         const nav = document.createElement('nav');
         nav.innerHTML = `
@@ -67,6 +80,7 @@
                     </div>
                 </div>
                 `;
+                
                 BottomLayer.appendChild(items);   
             }
         });
