@@ -133,12 +133,9 @@ body {
 }
 
 .productImage img{
-width: calc(351px/4);
-}
-
-.productImage img{
     flex: 1 1 0;
     margin-bottom: 20px;
+    width: calc(351px/4);
 }
 
 .productDetails {
