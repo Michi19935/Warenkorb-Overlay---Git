@@ -24,7 +24,7 @@ body {
     height: 513px;
     left: 0%;
     top: 0%;
-    /*background: url('https://michi19935.github.io/Warenkorb-Overlay---Git/TopLayerImage.PNG') no-repeat; */
+    background: url('https://michi19935.github.io/Warenkorb-Overlay---Git/TopLayerImage.PNG') no-repeat; 
     z-index: 110;
 }
 
@@ -62,24 +62,31 @@ body {
     margin-right: 0px; */
 }
 
-#BottomLayer ul li:nth-child(even) {
+#BottomLayer ul #basket li:nth-child(even) {
     width: 1.2rem;
     height: 1.2rem;
-    background-color: rgb(185, 185, 185);
-    transform: translateY(10%);
+    background-color: rgb(128, 128, 128);
+    transform: translateY(20%);
     line-height: 0.5rem;
     border-radius: 50%;
     margin-right: 12px;
     font-weight: bold;
     color: white;
-
 }
 
 #BottomLayer ul li p {
     color: white;
     font-size: 80%;
     text-align: center;
-    transform: translate(0%, 60%) scale(1);  
+    transform: translate(0%, -90%) scale(1);  
+}
+
+#BottomLayer #recommendations {
+    color: rgb(200, 200, 200);
+}
+
+#BottomLayer #RecommendationCounter{
+    background-color: rgb(200, 200, 200);
 }
 
 
