@@ -37,12 +37,13 @@
         CustomCSS.rel = 'stylesheet';
         CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/styles.css';
         document.head.appendChild(CustomCSS);
+        document.head.prepend(CustomCSS);
 
         const nav = document.createElement('nav');
         nav.innerHTML = `
         <ul>
-            <li>Empfehlungen</li><li></li>
-            <li>Warenkorb</li><li></li>
+            <li>Warenkorb</li><li id="basketCounter"><p><p></li>
+            <li>Empfehlungen</li><li id="RecommendationCounter"><p></p></li>
         </ul>
         `;
         BottomLayer.appendChild(nav);     
@@ -84,6 +85,12 @@
                 BottomLayer.appendChild(items);   
             }
         });
+
+        //Determine amount of items in cart as seen in this selector
+        const basketAmountString = document.querySelector('.wd-cart-number').textContent; //Z.B. "37 Artikel"
+        const basketAmountNumber = basketAmountString.slice(0,2); //Z.B. "37"
+        document.querySelector('#basketCounter').textContent = basketAmountNumber;
+
 
     </script>
 </body>

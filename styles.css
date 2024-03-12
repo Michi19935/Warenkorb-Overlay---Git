@@ -21,10 +21,10 @@ body {
 #TopLayerImage {
     position: fixed;
     width: inherit;
-    height: inherit;
+    height: 513px;
     left: 0%;
-    top: 0%;
-    background: url('https://michi19935.github.io/Warenkorb-Overlay---Git/TopLayerImage.PNG') no-repeat;
+    /* top: 0%;
+    background: url('https://michi19935.github.io/Warenkorb-Overlay---Git/TopLayerImage.PNG') no-repeat; */
     z-index: 110;
 }
 
@@ -63,15 +63,25 @@ body {
 }
 
 #BottomLayer ul li:nth-child(even) {
-    width: 16px;
-    height: 16px;
+    width: 1.2rem;
+    height: 1.2rem;
     background-color: rgb(185, 185, 185);
-    transform: translateY(20%);
+    transform: translateY(10%);
     line-height: 0.5rem;
     border-radius: 50%;
     margin-right: 12px;
+    font-weight: bold;
+    color: white;
 
 }
+
+#BottomLayer ul li p {
+    color: white;
+    font-size: 80%;
+    text-align: center;
+    transform: translate(0%, -90%) scale(1);  
+}
+
 
 #CloseButton {
     font-size: medium;
