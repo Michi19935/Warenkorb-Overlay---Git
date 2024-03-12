@@ -86,11 +86,55 @@
             }
         });
 
+        const titlesSelect = [...document.querySelectorAll('.wd-entities-title a')];
+        const titles = titlesSelect.map((title)=>{return title.innerText});
+        console.log(titles);
+
         //Determine amount of items in cart as seen in this selector
         const basketAmountString = document.querySelector('.wd-cart-number').textContent; //Z.B. "37 Artikel"
         const basketAmountNumber = basketAmountString.slice(0,2); //Z.B. "37"
         document.querySelector('#basketCounter').innerHTML = `<p>${basketAmountNumber}</p>`;
 
+        //GetValues for Recommendations ProductPage
+
+        const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
+        const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
+        const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
+        const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
+
+        const GetPriceRec = (ChromeNodes) => {
+            const array = ChromeNodes.map((value)=>{return value.innerText});
+            //Limit array to 4 items
+            const arrayshortend = array.slice(0,-4);
+            return arrayshortend
+        }
+
+        const GetImagesRec = (ChromeNodes) => {
+            const array = ChromeNodes.map((value)=>{return value.src});
+            // Some images need to be removed from array
+            const filteredArray = array.filter((word) => !word.includes('B02'));
+            return filteredArray
+        }
+
+        const GetTitlesRec = (ChromeNodes) => {
+            const array = ChromeNodes.map((value)=>{return value.innerText});
+            //Limit array to 4 items
+            const arrayshortend = array.slice(0,-4);
+            return arrayshortend
+        }
+
+        const GetDeeplinksRec = (ChromeNodes) => {
+            const array = ChromeNodes.map((value)=>{return value.href});
+            //Limit array to 4 items
+            const arrayshortend = array.slice(0,-4);
+            return arrayshortend
+        }
+        const PriceRec = GetPriceRec(PriceRecSelect);
+        const DeeplinkRec = GetDeeplinksRec(DeeplinkRecSelect);
+        const titlesRec = GetTitlesRec(titlesRecSelect);
+        const ImageRec = GetImagesRec(ImageRecSelect);
+
+        console.log(titlesRec, ImageRec, DeeplinkRec, PriceRec)
 
     </script>
 </body>
