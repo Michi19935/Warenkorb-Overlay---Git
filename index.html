@@ -43,7 +43,7 @@
         nav.innerHTML = `
         <ul>
             <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"></li></span>
-            <span id="recommendations"><li class="Recommendations">Empfehlungen</li><li id="RecommendationCounter"></li></span>
+            <span id="recommendations"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
         </ul>
         `;
         BottomLayer.appendChild(nav);    
@@ -138,6 +138,9 @@
             document.querySelector('#BottomLayer').appendChild(RecItemsParam);
         }
 
+        //Determine amount of items in recommendations
+        document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
+
         console.log(ImageRec[0], titlesRec[0], PriceRec[0] , 'RecommendationItem');
 
         BottomLayer.addEventListener('click', (e)=> {
@@ -150,6 +153,13 @@
                 $('.BaskItem').show();
             }
         });
+
+        //Close Overlay - hide overlay
+        document.addEventListener('click', (e) => {
+            if(e.target.id=='CloseButton'){
+                $(ParentElement).hide();
+            }
+        })
 
 
 
