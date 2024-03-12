@@ -30,13 +30,13 @@
         //Adding JQuery to DOM
         const JQuery = document.createElement('script');
         JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
-        head.appendChild(JQuery);
+        document.head.appendChild(JQuery);
 
         //Adding CSS file to DOM
         const CustomCSS = document.createElement('link');
         CustomCSS.rel = 'stylesheet';
         CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/styles.css';
-        head.appendChild(CustomCSS);
+        document.head.appendChild(CustomCSS);
 
         const nav = document.createElement('nav');
         nav.innerHTML = `
@@ -76,7 +76,7 @@
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
                         <button class="ZumProdukt"> Zum Produkt </button>
-                        <button class="JetztKaufen"> Jetzt kaufen </button>
+                        <button class="JetztKaufen" id="JetztKaufen"> Jetzt kaufen </button>
                     </div>
                 </div>
                 `;
