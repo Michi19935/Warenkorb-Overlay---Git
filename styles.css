@@ -62,7 +62,7 @@ body {
     margin-right: 0px; */
 }
 
-#BottomLayer ul #basket li:nth-child(even) {
+#BottomLayer ul #basket li:nth-child(even), #BottomLayer ul #recommendations li:nth-child(even) {
     width: 1.2rem;
     height: 1.2rem;
     background-color: rgb(128, 128, 128);
@@ -85,7 +85,7 @@ body {
     color: rgb(200, 200, 200);
 }
 
-#BottomLayer #RecommendationCounter{
+#BottomLayer #recommendations #RecommendationCounter{
     background-color: rgb(200, 200, 200);
 }
 
