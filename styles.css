@@ -1,0 +1,130 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: bold;
+    font-size: 1rem;
+    background-color: #605f6138;
+}
+
+#parent {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 351px;
+    margin: 0 auto;
+    /* transform: translate(-50%, -50%) scale(1);  */
+    z-index: 110;
+}
+
+#TopLayerImage {
+    position: fixed;
+    width: inherit;
+    height: inherit;
+    left: 0%;
+    top: 0%;
+    background: url('./TopLayerImage.PNG') no-repeat;
+}
+
+#BottomLayer {
+    position: fixed;
+    left: 0%;
+    top: 513px;
+    width: inherit;
+    height: inherit;
+}
+
+#BottomLayer nav {
+    background-color: white;
+}
+
+#BottomLayer ul {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    padding: 1rem;
+    padding-left: 0px;
+    height: inherit;
+}
+
+#BottomLayer ul li {
+    display: inline-block;
+    vertical-align: flex-end;
+    height: 50px;
+    list-style-type: none;
+    margin-right: 4px;
+    height: inherit;
+    /* margin-left: 10px;
+    margin-right: 0px; */
+}
+
+#BottomLayer ul li:nth-child(even) {
+    width: 16px;
+    height: 16px;
+    background-color: rgb(185, 185, 185);
+    transform: translateY(20%);
+    line-height: 0.5rem;
+    border-radius: 50%;
+    margin-right: 12px;
+
+}
+
+#CloseButton {
+    font-size: medium;
+    color: white;
+    position: fixed;
+    left: 351px;
+    width: 30px;
+    height: 30px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+/* Items */
+
+.items {
+    display: flex;
+    border-top: 0.5px solid rgba(185, 185, 185, 0.4);
+    background-color: white;
+}
+
+.ZumProdukt, .JetztKaufen {
+    display: inline-block;
+    border: none;
+    padding: 8px;
+    text-transform: uppercase;
+    background-color: rgb(225, 225, 225);
+    color: rgb(112, 112, 112);
+}
+
+.JetztKaufen {
+    background-color: #A2BA24;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+}
+
+.productTitle {
+    margin-top: 12px;
+}
+
+.CTAs, .productPrice, .productTitle {
+    margin-bottom: 10px;
+}
+
+.productImage img{
+width: calc(351px/4);
+}
+
+.productImage img{
+    flex: 1 1 0;
+    margin-bottom: 20px;
+}
+
+.productDetails {
+    flex: 1 1 0;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}

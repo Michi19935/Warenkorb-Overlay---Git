@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const parent = document.createElement('div');
+        parent.id = 'parent';
+        document.body.appendChild(parent);
+
+        const TopLayerImage = document.createElement('div');
+        TopLayerImage.id = 'TopLayerImage';
+        parent.appendChild(TopLayerImage);
+
+        const BottomLayer = document.createElement('div');
+        BottomLayer.id = 'BottomLayer';
+        parent.appendChild(BottomLayer);
+
+        const CloseButton = document.createElement('button');
+        CloseButton.id = 'CloseButton';
+        CloseButton.textContent = 'X';
+        parent.appendChild(CloseButton);
+
+        const nav = document.createElement('nav');
+        nav.innerHTML = `
+        <ul>
+            <li>Empfehlungen</li><li></li>
+            <li>Warenkorb</li><li></li>
+        </ul>
+        `;
+        BottomLayer.appendChild(nav);     
+
+        const GoogleFontsPoppins = document.createElement('div');
+        GoogleFontsPoppins.innerHTML = `
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">`;
+        document.head.appendChild(GoogleFontsPoppins);
+
+        const body = document.querySelector('body');
+        body.BottomLayer = BottomLayer;
+        //Log product-details to console after someone clicks on add to cart
+        document.body.addEventListener('click', (e)=> {
+            if(e.target.className.includes('single_add_to_cart_button')){
+                const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount'];
+                const PImage = document.querySelector(Selectoren[0]).src;
+                const Title = document.querySelector(Selectoren[1]).innerText;
+                const Price = document.querySelector(Selectoren[2]).innerText;
+
+                //Add Product to "Warenkorb-Section"
+                const items = document.createElement('div');
+                items.classList = 'items';
+                items.innerHTML = `
+                <div class="productImage">
+                    <img src="${PImage}" alt="">
+                </div>
+                <div class="productDetails">
+                    <div class="productTitle">${Title}</div>
+                    <div class="productPrice"><b>${Price}</b></div>
+                    <div class="CTAs">
+                        <button class="ZumProdukt"> Zum Produkt </button>
+                        <button class="JetztKaufen"> Jetzt kaufen </button>
+                    </div>
+                </div>
+                `;
+                BottomLayer.appendChild(items);   
+            }
+        });
+
+    </script>
+</body>
+</html>
