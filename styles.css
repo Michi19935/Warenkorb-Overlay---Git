@@ -108,13 +108,13 @@ body {
     background-color: white;
 }
 
-#BasketItem .productImage img{
+.productImage img{
     flex: 1 1 0;
     margin-bottom: 20px;
     width: calc(351px/4);
 }
 
-#BasketItem .productDetails {
+.productDetails {
     flex: 1 1 0;
     margin-left: 10px;
     font-size: 0.9rem;
