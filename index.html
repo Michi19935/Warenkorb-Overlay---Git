@@ -187,7 +187,7 @@
                 document.querySelector('#BottomLayer').appendChild(RecItemsParam);
             }
         }
-        
+
         //Determine amount of recommendations
         const RecommendationCounter = (titlesRec) => {
             document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
@@ -202,13 +202,13 @@
         }
 
         BottomLayer.addEventListener('click', (e)=> {
-            console.log(e.target.classList);
             if(e.target.classList == 'Recommendations'){
                 $('.RecItem').show();
                 $('.BaskItem').hide();
                 $('#basket').addClass('inactive');
                 $('#recommendations').removeClass('inactive');
             } else if (e.target.classList == 'Basket'){
+                console.log(e.target.classList)
                 $('.RecItem').hide();
                 $('.BaskItem').show();
                 $('#recommendations').addClass('inactive');
