@@ -86,7 +86,6 @@
         document.head.appendChild(GoogleFontsPoppins);
   
                 const addtoCartProductPages = () => {
-                    console.log('realllllly?');
                     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
                     addtoCartProductPages.addEventListener('click', (e)=>{
                     const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount',];
@@ -95,7 +94,7 @@
                     const Title = document.querySelector(Selectoren[1]).innerText;
                     const Price = document.querySelector(Selectoren[2]).innerText;
                     const Deeplink = window.location.href;
-                    
+
             });}
 
 
@@ -137,8 +136,6 @@
         const addtoCartAllOtherPages = () => {
 
             const CartSelect = document.querySelectorAll('.add_to_cart_button');
-
-            console.log('Hallo von cart listener');
 
             CartSelect.forEach((button, index)=> {
                 button.id = (`eventListener ${index}`);
@@ -188,7 +185,6 @@
                 //Adding only one item
                 const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
                 itemsParam.classList = Type;
-                document.querySelector('#BottomLayer').appendChild(itemsParam);
             }
 
         };
@@ -197,7 +193,6 @@
                 for(i=0; i <=5; i++){
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
-                document.querySelector('#productlayer').appendChild(RecItemsParam);
             }
         }
 
@@ -209,6 +204,7 @@
         if(window.location.href.includes('produkte')){
             GetValuesRec(productLayer);
             addtoCartProductPages(productLayer);
+
         } else {
             GetValuesRec(productLayer);
             addtoCartAllOtherPages(productLayer);
@@ -217,14 +213,14 @@
         BottomLayer.addEventListener('click', (e)=> {
             if(e.target.classList == 'Recommendations'){
                 $('.RecItem').show();
-                $('.BaskItem').hide();
+                $('.BasketItem').hide();
                 $('#basket').addClass('inactive');
                 $('#recommendations').removeClass('inactive');
             } else if (e.target.classList == 'Basket'){
                 $('.RecItem').hide();
-                $('.BaskItem').show();
-                $('#recommendations').addClass('inactive');
+                $('.BasketItem').show();
                 $('#basket').removeClass('inactive');
+                $('#recommendations').addClass('inactive');
             }
         });
 
