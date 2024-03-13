@@ -88,10 +88,8 @@
                     const Price = document.querySelector(Selectoren[2]).innerText;
                     const Deeplink = window.location.href;
 
-                //Add Product to "Warenkorb-Section"
-                const itemsParam = Items(PImage,Title,Price,Deeplink,'BasketItem');
-                itemsParam.classList = 'BaskItem';
-                document.querySelector('#BottomLayer').appendChild(itemsParam);
+                    //Add Product to "Warenkorb-Section"
+                    AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem');
             });}
 
 
@@ -133,67 +131,54 @@
 
         const addtoCartAllOtherPages = () => {
 
-        const CartSelect = document.querySelectorAll('.add_to_cart_button');
+            const CartSelect = document.querySelectorAll('.add_to_cart_button');
 
-        CartSelect.forEach((button, index)=> {
-            button.id = (`eventListener ${index}`);
-            button.addEventListener('click',()=>{
-                const productID = button.getAttribute('data-product_id');
-                
-                const titlesSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
-                const DeeplinkSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
-                const PriceSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper span.price`)];
-                const ImageSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper img.entered`)];
+            CartSelect.forEach((button, index)=> {
+                button.id = (`eventListener ${index}`);
+                button.addEventListener('click',()=>{
+                    const productID = button.getAttribute('data-product_id');
+                    
+                    const titlesSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
+                    const DeeplinkSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
+                    const PriceSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper span.price`)];
+                    const ImageSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper img.entered`)];
 
-                //Add Product to "Warenkorb-Section"
-                AddtoOverlay(ImageSelect,PriceSelect,DeeplinkSelect,titlesSelect,'BasketItem');
+                    //Add Product to "Warenkorb-Section"
+                    AddtoOverlay(ImageSelect,PriceSelect,DeeplinkSelect,titlesSelect,'BasketItem');
+                })
             })
-        })
         }
 
-        const AddtoOverlay = (ImageSelect,PriceSelect,DeeplinkSelect,titlesSelect,Type) => {
+        const GetValuesRec = () => {
 
-            const PImage = GetImagesRec(ImageSelect);
-            const Price = GetPriceRec(PriceSelect);
-            const Deeplink = GetDeeplinksRec(DeeplinkSelect);
-            const Title = GetTitlesRec(titlesSelect);
-
-            const itemsParam = Items(PImage,Title,Price,Deeplink,Type);
-            itemsParam.classList = 'BaskItem';
-            document.querySelector('#BottomLayer').appendChild(itemsParam);
-        };
-
-        const GetValuesRecProductPages = () => {
-            const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
+            const titlesRecSelect= [...document.querySelectorAll('.product-wrapper h3 a')];
             const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
             const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
-            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered')];
+            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img')];
 
-            const ImageRec = GetImagesRec(ImageRecSelect);
-            const PriceRec = GetPriceRec(PriceRecSelect);
-            const DeeplinkRec = GetDeeplinksRec(DeeplinkRecSelect);
-            const titlesRec = GetTitlesRec(titlesRecSelect);
+            //Add Product to "Recommendation-Section"
+            AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
-            InsertRec(ImageRec, PriceRec, DeeplinkRec, titlesRec, 'RecommendationItem');
-            RecommendationCounter(titlesRec);
+            RecommendationCounter(titlesRecSelect);
         }
 
-        //GetValues for Recommendations all other pages
+        const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type) => {
 
-        const GetValuesRecAllOtherPages = () => {
-            const titlesRecSelectCatPage = [...document.querySelectorAll('.product-wrapper h3 a')];
-            const DeeplinkRecSelectCatPage = [...document.querySelectorAll('.product-wrapper h3 a')];
-            const PriceRecSelectCatPage = [...document.querySelectorAll('.product-wrapper span.price')];
-            const ImageRecSelectCatPage = [...document.querySelectorAll('.product-wrapper img.entered')];
+            if (Type == 'RecommendationItem'){
+                //Adding several items
+                const PImage = GetImagesRec(ImageSel);
+                const Price = GetPriceRec(PriceSel);
+                const Deeplink = GetDeeplinksRec(DeeplinkSel);
+                const Title = GetTitlesRec(TitleSel);
+                InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
+            } else if(Type == 'BasketItem') {
+                //Adding only one item
+                const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
+                itemsParam.classList = Type;
+                document.querySelector('#BottomLayer').appendChild(itemsParam);
+            }
 
-            const PriceRec = GetPriceRec(PriceRecSelectCatPage);
-            const ImageRec = GetImagesRec(ImageRecSelectCatPage);
-            const DeeplinkRec = GetDeeplinksRec(DeeplinkRecSelectCatPage);
-            const titlesRec = GetTitlesRec(titlesRecSelectCatPage);
-
-            InsertRec(ImageRec, PriceRec, DeeplinkRec, titlesRec, 'RecommendationItem');
-            RecommendationCounter(titlesRec);
-        }
+        };
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
                 for(i=0; i <=5; i++){
@@ -202,18 +187,17 @@
                 document.querySelector('#BottomLayer').appendChild(RecItemsParam);
             }
         }
+        
         //Determine amount of recommendations
         const RecommendationCounter = (titlesRec) => {
             document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
         }
 
-        // console.log(ImageRec[0], titlesRec[0], PriceRec[0] , 'RecommendationItem');
-
         if(window.location.href.includes('kategorie')){
-            GetValuesRecAllOtherPages();
+            GetValuesRec();
             addtoCartAllOtherPages();
         } else if (!window.location.href.includes('kategorie')){
-            GetValuesRecProductPages();
+            GetValuesRec();
             addtoCartProductPages();
         }
 

@@ -131,6 +131,8 @@ body {
 #JetztKaufen {
     background-color: #A2BA24;
     color: white;
+    animation: none;
+    transition: none;
 }
 
 #ZumProdukt {
