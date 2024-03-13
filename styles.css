@@ -128,7 +128,7 @@ body {
     /* color: rgb(112, 112, 112); */
 }
 
-#JetztKaufen {
+#JetztKaufen a{
     background-color: #A2BA24;
     color: white;
     animation: none;
