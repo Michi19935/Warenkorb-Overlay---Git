@@ -88,7 +88,7 @@ body {
 #BottomLayer #recommendations #RecommendationCounter{
     background-color: rgb(200, 200, 200);
 }
-/* test */
+
 #CloseButton {
     font-size: medium;
     color: white;
@@ -129,11 +129,12 @@ body {
     color: rgb(112, 112, 112);
 }
 
-.JetztKaufen, #JetztKaufen {
+.JetztKaufen, #JetztKaufen, #JetztKaufen a {
     background-color: #A2BA24;
     color: rgb(0, 0, 0);
     margin-left: 10px;
     padding: 8px;
+    animation: none;
 }
 
 .productTitle {

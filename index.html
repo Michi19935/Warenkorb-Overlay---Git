@@ -48,7 +48,7 @@
         `;
         BottomLayer.appendChild(nav);    
         
-        const Items = (PImage,Title,Price,Type) => {
+        const Items = (PImage,Title,Price,Deeplink,Type) => {
            const items = document.createElement('div');
            items.id = Type;
            items.innerHTML =  `  
@@ -60,13 +60,15 @@
                     <div class="productTitle">${Title}</div>
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
-                        <button class="ZumProdukt"> Zum Produkt </button>
-                        <button class="JetztKaufen" id="JetztKaufen"> Jetzt kaufen </button>
+                        <button class="ZumProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
+                        <button class="JetztKaufen" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
                     </div>
                 </div> 
                 `;
                 return items
         }
+
+        BottomLayer.appendChild(nav); 
 
         const GoogleFontsPoppins = document.createElement('div');
         GoogleFontsPoppins.innerHTML = `
@@ -76,15 +78,17 @@
         document.head.appendChild(GoogleFontsPoppins);
   
                 const addtoCartProductPages = () => {
+                    console.log('Hi');
                     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
                     addtoCartProductPages.addEventListener('click', (e)=>{
-                    const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount'];
+                    const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount',];
                     const PImage = document.querySelector(Selectoren[0]).src;
                     const Title = document.querySelector(Selectoren[1]).innerText;
                     const Price = document.querySelector(Selectoren[2]).innerText;
+                    const Deeplink = window.location.href;
 
                 //Add Product to "Warenkorb-Section"
-                const itemsParam = Items(PImage,Title,Price,'BasketItem');
+                const itemsParam = Items(PImage,Title,Price,Deeplink,'BasketItem');
                 itemsParam.classList = 'BaskItem';
                 document.querySelector('#BottomLayer').appendChild(itemsParam);
             });}
@@ -114,119 +118,9 @@
 
         const GetTitlesRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.innerText});
-            return array
-        }
-
-        const GetDeeplinksRec = (ChromeNodes) => {
-            const array = ChromeNodes.map((value)=>{return value.href});
-            return array
-        }
-
-        const parent = document.createElement('div');
-        parent.id = 'parent';
-        document.body.appendChild(parent);
-
-        const TopLayerImage = document.createElement('div');
-        TopLayerImage.id = 'TopLayerImage';
-        parent.appendChild(TopLayerImage);
-
-        const BottomLayer = document.createElement('div');
-        BottomLayer.id = 'BottomLayer';
-        parent.appendChild(BottomLayer);
-
-        const CloseButton = document.createElement('button');
-        CloseButton.id = 'CloseButton';
-        CloseButton.textContent = 'X';
-        parent.appendChild(CloseButton);
-
-        //Adding JQuery to DOM
-        const JQuery = document.createElement('script');
-        JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
-        document.head.appendChild(JQuery);
-
-        //Adding CSS file to DOM
-        const CustomCSS = document.createElement('link');
-        CustomCSS.rel = 'stylesheet';
-        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/styles.css';
-        document.head.appendChild(CustomCSS);
-        document.head.prepend(CustomCSS);
-
-        const nav = document.createElement('nav');
-        nav.innerHTML = `
-        <ul>
-            <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"></li></span>
-            <span id="recommendations"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
-        </ul>
-        `;
-        BottomLayer.appendChild(nav);    
-        
-        const Items = (PImage,Title,Price,Type) => {
-           const items = document.createElement('div');
-           items.id = Type;
-           items.innerHTML =  `  
-            
-            <div class="productImage">
-                    <img src="${PImage}" alt="">
-                </div>
-                <div class="productDetails">
-                    <div class="productTitle">${Title}</div>
-                    <div class="productPrice"><b>${Price}</b></div>
-                    <div class="CTAs">
-                        <button class="ZumProdukt"> Zum Produkt </button>
-                        <button class="JetztKaufen" id="JetztKaufen"> Jetzt kaufen </button>
-                    </div>
-                </div> 
-                `;
-                return items
-        }
-
-        const GoogleFontsPoppins = document.createElement('div');
-        GoogleFontsPoppins.innerHTML = `
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">`;
-        document.head.appendChild(GoogleFontsPoppins);
-  
-                const addtoCartProductPages = () => {
-                    const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
-                    addtoCartProductPages.addEventListener('click', (e)=>{
-                    const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount'];
-                    const PImage = document.querySelector(Selectoren[0]).src;
-                    const Title = document.querySelector(Selectoren[1]).innerText;
-                    const Price = document.querySelector(Selectoren[2]).innerText;
-
-                //Add Product to "Warenkorb-Section"
-                const itemsParam = Items(PImage,Title,Price,'BasketItem');
-                itemsParam.classList = 'BaskItem';
-                document.querySelector('#BottomLayer').appendChild(itemsParam);
-            });}
-
-
-        const titlesSelect = [...document.querySelectorAll('.wd-entities-title a')];
-        const titles = titlesSelect.map((title)=>{return title.innerText});
-
-        //Determine amount of items in cart as seen in this selector
-        const basketAmountString = document.querySelector('.wd-cart-number').textContent; //Z.B. "37 Artikel"
-        const basketAmountNumber = basketAmountString.slice(0,2); //Z.B. "37"
-        document.querySelector('#basketCounter').innerHTML = `<p>${basketAmountNumber}</p>`;
-
-        //GetValues for Recommendations ProductPage
-
-        const GetImagesRec = (ChromeNodes) => {
-            const array = ChromeNodes.map((value)=>{return value.src});
-            // Some images need to be removed from array
-            const filteredArray = array.filter((word) => (!word.includes('B02') && !word.includes('b02')));
-            return filteredArray
-        }
-
-        const GetPriceRec = (ChromeNodes) => {
-            const array = ChromeNodes.map((value)=>{return value.innerText});
-            return array
-        }
-
-        const GetTitlesRec = (ChromeNodes) => {
-            const array = ChromeNodes.map((value)=>{return value.innerText});
-            return array
+            //Limit array to four items so RecommendationCounter shows correct value
+            const shortendArray = array.slice(0,-4);
+            return shortendArray
         }
 
         const GetDeeplinksRec = (ChromeNodes) => {
@@ -245,7 +139,8 @@
             const DeeplinkRec = GetDeeplinksRec(DeeplinkRecSelect);
             const titlesRec = GetTitlesRec(titlesRecSelect);
 
-            InsertRec(ImageRec, PriceRec, DeeplinkRec, titlesRec, 'Recommendations');
+            InsertRec(ImageRec, PriceRec, DeeplinkRec, titlesRec, 'RecommendationItem');
+            RecommendationCounter(titlesRec);
         }
 
                 //GetValues for Recommendations all other pages
@@ -262,66 +157,29 @@
             const titlesRec = GetTitlesRec(titlesRecSelectCatPage);
 
             InsertRec(ImageRec, PriceRec, DeeplinkRec, titlesRec, 'RecommendationItem');
+            RecommendationCounter(titlesRec);
         }
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
                 for(i=0; i <=5; i++){
-                const RecItemsParam = Items(ImageRec[i], titlesRec[i], PriceRec[i] , Type);
+                const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
                 document.querySelector('#BottomLayer').appendChild(RecItemsParam);
             }
         }
         //Determine amount of recommendations
-        // document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
-
-
-        if(window.location.href.includes('kategorie')){
-            GetValuesRecAllOtherPages();
-        } else if (!window.location.href.includes('kategorie')){
-            addtoCartProductPages();
-            GetValuesRecProductPages();
+        const RecommendationCounter = (titlesRec) => {
+            document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
         }
 
         // console.log(ImageRec[0], titlesRec[0], PriceRec[0] , 'RecommendationItem');
 
-        BottomLayer.addEventListener('click', (e)=> {
-            console.log(e.target.classList);
-            if(e.target.classList == 'Recommendations'){
-                $('.RecItem').show();
-                $('.BaskItem').hide();
-            } else if (e.target.classList == 'Basket'){
-                $('.RecItem').hide();
-                $('.BaskItem').show();
-            }
-        });
-
-        //Close Overlay - hide overlay
-        document.addEventListener('click', (e) => {
-            if(e.target.id=='CloseButton'){
-                $(parent).hide();
-            }
-        });
-        }
-
-        const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
-                for(i=0; i <=5; i++){
-                const RecItemsParam = Items(ImageRec[i], titlesRec[i], PriceRec[i] , Type);
-                RecItemsParam.classList = 'RecItem';
-                document.querySelector('#BottomLayer').appendChild(RecItemsParam);
-            }
-        }
-        //Determine amount of recommendations
-        // document.querySelector('#recommendationCounter').innerHTML = `<p>${titlesRec.length}</p>`;
-
-
         if(window.location.href.includes('kategorie')){
             GetValuesRecAllOtherPages();
         } else if (!window.location.href.includes('kategorie')){
-            addtoCartProductPages();
             GetValuesRecProductPages();
+            addtoCartProductPages();
         }
-
-        // console.log(ImageRec[0], titlesRec[0], PriceRec[0] , 'RecommendationItem');
 
         BottomLayer.addEventListener('click', (e)=> {
             console.log(e.target.classList);
@@ -340,8 +198,6 @@
                 $(parent).hide();
             }
         })
-
-
 
     </script>
 </body>
