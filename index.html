@@ -160,10 +160,15 @@
 
         const GetValuesRec = () => {
             //On all other pages there are no rec items so we just take the last items on the page . therefore reverse() array
-            const titlesRecSelect= [...document.querySelectorAll('.product-wrapper h3 a')].reverse();
-            const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].reverse();
-            const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')].reverse();
-            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')].reverse();
+            const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
+            const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
+            const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')].slice(0,4);
+            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')].slice(0,4);
+            console.log('get values func')
+            console.log(titlesRecSelect);
+            console.log(DeeplinkRecSelect);
+            console.log(PriceRecSelect);
+            console.log(ImageRecSelect);
             const amountOfImages = ImageRecSelect.length;
             //Add Product to "Recommendation-Section"
             AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
@@ -176,10 +181,10 @@
             if (Type == 'RecommendationItem'){
                 //Adding several items
                 const PImage = GetImagesRec(ImageSel);
-                console.log('amount images', PImage);
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
                 const Title = GetTitlesRec(TitleSel);
+
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
             } else if(Type == 'BasketItem') {
                 //Adding only one item
@@ -190,7 +195,7 @@
         };
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
-                for(i=0; i <=5; i++){
+                for(i=0; i <4; i++){
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
@@ -202,12 +207,12 @@
         }
 
         if(window.location.href.includes('produkte')){
-            GetValuesRec(productLayer);
-            addtoCartProductPages(productLayer);
+            GetValuesRec();
+            addtoCartProductPages();
 
         } else {
-            GetValuesRec(productLayer);
-            addtoCartAllOtherPages(productLayer);
+            GetValuesRec();
+            addtoCartAllOtherPages();
         }
 
         BottomLayer.addEventListener('click', (e)=> {
