@@ -103,6 +103,10 @@ body {
 
 /* Items */
 
+#productlayer {
+    background-color: red;
+}
+
 #BasketItem, #RecommendationItem {
     display: flex;
     border-top: 0.5px solid rgba(185, 185, 185, 0.4);
