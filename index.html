@@ -60,7 +60,7 @@
                     <div class="productTitle">${Title}</div>
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
-                        <button class="ZumProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
+                        <button class="ZumProdukt" id="ZumnProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
                         <button class="JetztKaufen" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
                     </div>
                 </div> 
@@ -132,10 +132,10 @@
             const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
             const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
             const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
-            const ImageRecSelect = [...document.querySelectorAll('.related-and-upsells img.entered')];
+            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered')];
 
-            const PriceRec = GetPriceRec(PriceRecSelect);
             const ImageRec = GetImagesRec(ImageRecSelect);
+            const PriceRec = GetPriceRec(PriceRecSelect);
             const DeeplinkRec = GetDeeplinksRec(DeeplinkRecSelect);
             const titlesRec = GetTitlesRec(titlesRecSelect);
 
