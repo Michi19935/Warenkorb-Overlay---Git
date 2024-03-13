@@ -64,7 +64,7 @@
                         <button class="JetztKaufen" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
                     </div>
                 </div> 
-                `;
+            `;
                 return items
         }
 
@@ -186,9 +186,13 @@
             if(e.target.classList == 'Recommendations'){
                 $('.RecItem').show();
                 $('.BaskItem').hide();
+                $('#basket').addClass('inactive');
+                $('#recommendations').removeClass('inactive');
             } else if (e.target.classList == 'Basket'){
                 $('.RecItem').hide();
                 $('.BaskItem').show();
+                $('#recommendations').addClass('inactive');
+                $('#basket').removeClass('inactive');
             }
         });
 

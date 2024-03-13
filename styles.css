@@ -85,8 +85,12 @@ body {
     color: rgb(200, 200, 200);
 }
 
-#BottomLayer #recommendations #RecommendationCounter{
-    background-color: rgb(200, 200, 200);
+#BottomLayer #recommendations #active, #BottomLayer #basket #active{
+    color: rgb(225, 225, 225);
+}
+
+#BottomLayer #recommendations #active li, #BottomLayer #basket #active li{
+    background-color: rgb(189, 189, 189);
 }
 
 #CloseButton {
