@@ -82,6 +82,7 @@
                     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
                     addtoCartProductPages.addEventListener('click', (e)=>{
                     const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount',];
+
                     const PImage = document.querySelector(Selectoren[0]).src;
                     const Title = document.querySelector(Selectoren[1]).innerText;
                     const Price = document.querySelector(Selectoren[2]).innerText;
@@ -119,14 +120,48 @@
         const GetTitlesRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.innerText});
             //Limit array to four items so RecommendationCounter shows correct value
-            const shortendArray = array.slice(0,-4);
-            return shortendArray
+            return array
         }
+
+        // const shortendArray = array.slice(0,-4);
+        //     console.log(shortendArray)
 
         const GetDeeplinksRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.href});
             return array
         }
+
+        const addtoCartAllOtherPages = () => {
+
+        const CartSelect = document.querySelectorAll('.add_to_cart_button');
+
+        CartSelect.forEach((button, index)=> {
+            button.id = (`eventListener ${index}`);
+            button.addEventListener('click',()=>{
+                const productID = button.getAttribute('data-product_id');
+                
+                const titlesSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
+                const DeeplinkSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper h3 a`)];
+                const PriceSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper span.price`)];
+                const ImageSelect = [...document.querySelectorAll(`[data-id="${productID}"] .product-wrapper img.entered`)];
+
+                //Add Product to "Warenkorb-Section"
+                AddtoOverlay(ImageSelect,PriceSelect,DeeplinkSelect,titlesSelect,'BasketItem');
+            })
+        })
+        }
+
+        const AddtoOverlay = (ImageSelect,PriceSelect,DeeplinkSelect,titlesSelect,Type) => {
+
+            const PImage = GetImagesRec(ImageSelect);
+            const Price = GetPriceRec(PriceSelect);
+            const Deeplink = GetDeeplinksRec(DeeplinkSelect);
+            const Title = GetTitlesRec(titlesSelect);
+
+            const itemsParam = Items(PImage,Title,Price,Deeplink,Type);
+            itemsParam.classList = 'BaskItem';
+            document.querySelector('#BottomLayer').appendChild(itemsParam);
+        };
 
         const GetValuesRecProductPages = () => {
             const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
@@ -143,7 +178,7 @@
             RecommendationCounter(titlesRec);
         }
 
-                //GetValues for Recommendations all other pages
+        //GetValues for Recommendations all other pages
 
         const GetValuesRecAllOtherPages = () => {
             const titlesRecSelectCatPage = [...document.querySelectorAll('.product-wrapper h3 a')];
@@ -176,6 +211,7 @@
 
         if(window.location.href.includes('kategorie')){
             GetValuesRecAllOtherPages();
+            addtoCartAllOtherPages();
         } else if (!window.location.href.includes('kategorie')){
             GetValuesRecProductPages();
             addtoCartProductPages();
