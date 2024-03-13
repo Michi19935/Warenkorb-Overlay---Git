@@ -105,6 +105,8 @@ body {
 
 #productlayer {
     background-color: red;
+    overflow-y:scroll;
+    z-index: 100;
 }
 
 #BasketItem, #RecommendationItem {

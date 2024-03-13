@@ -71,6 +71,8 @@
                     </div>
                 </div> 
             `;
+
+            document.querySelector('#productlayer').appendChild(items);
                 return items
         }
 
@@ -93,9 +95,7 @@
                     const Title = document.querySelector(Selectoren[1]).innerText;
                     const Price = document.querySelector(Selectoren[2]).innerText;
                     const Deeplink = window.location.href;
-
-                    //Add Product to "Warenkorb-Section"
-                    AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem');
+                    
             });}
 
 
@@ -197,7 +197,7 @@
                 for(i=0; i <=5; i++){
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
-                document.querySelector('#BottomLayer').appendChild(RecItemsParam);
+                document.querySelector('#productlayer').appendChild(RecItemsParam);
             }
         }
 
@@ -207,11 +207,11 @@
         }
 
         if(window.location.href.includes('produkte')){
-            GetValuesRec();
-            addtoCartProductPages();
+            GetValuesRec(productLayer);
+            addtoCartProductPages(productLayer);
         } else {
-            GetValuesRec();
-            addtoCartAllOtherPages();
+            GetValuesRec(productLayer);
+            addtoCartAllOtherPages(productLayer);
         }
 
         BottomLayer.addEventListener('click', (e)=> {
