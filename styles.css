@@ -104,9 +104,9 @@ body {
 /* Items */
 
 #productlayer {
-    background-color: red;
-    overflow-y:scroll;
-    z-index: 100;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 300px;
 }
 
 #BasketItem, #RecommendationItem {
