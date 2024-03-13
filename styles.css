@@ -81,15 +81,9 @@ body {
     transform: translatey(60%);  
 }
 
-#BottomLayer #recommendations {
-    color: rgb(200, 200, 200);
-}
 
-#BottomLayer #recommendations #active, #BottomLayer #basket #active{
+#BottomLayer ul #inactive{
     color: rgb(225, 225, 225);
-}
-
-#BottomLayer #recommendations #active li, #BottomLayer #basket #active li{
     background-color: rgb(189, 189, 189);
 }
 
