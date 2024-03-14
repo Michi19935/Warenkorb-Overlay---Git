@@ -14,9 +14,18 @@
 }
 
 @media only screen and (max-height: 700px) {
+
     #TopLayerImage {
-        flex: 0 1 350px;
+        flex: 1 1 0;
         background: url('./Canis\ Ovleray\ Image.png'); 
+    }
+
+    #BottomLayer {
+        flex: 0 1 55px;
+    }
+
+    #productlayer {
+        flex: 0 1 266px; 
     }
 }
 
