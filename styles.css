@@ -36,13 +36,13 @@ body {
     height: inherit;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-height: 700px) {
     #TopLayerImage {
         height: 50%;
     }
 
     #BottomLayer {
-        top: 265px;
+        top: 279px;
     }
 }
 
