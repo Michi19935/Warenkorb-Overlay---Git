@@ -28,18 +28,22 @@ body {
     z-index: 110;
 }
 
-@media only screen and (max-width: 700px) {
-    #TopLayerImage {
-      height: 50%;
-    }
-  }
-
 #BottomLayer {
     position: fixed;
     left: 0%;
     top: 513px;
     width: inherit;
     height: inherit;
+}
+
+@media only screen and (max-width: 700px) {
+    #TopLayerImage {
+        height: 50%;
+    }
+
+    #BottomLayer {
+        height: 50%;
+    }
 }
 
 #BottomLayer nav {
