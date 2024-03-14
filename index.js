@@ -203,7 +203,7 @@
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
 
-                        //Determine amount of recommendations
+                //Determine amount of recommendations
                 document.querySelector('#recommendationCounter').innerHTML = `<p>${PImage.length}</p>`;
 
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');

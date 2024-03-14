@@ -1,4 +1,3 @@
-
 #parent {
     position: fixed;
     display: flex;
@@ -25,16 +24,7 @@
     left: 351px;
     background-color: #e2e2e2;
 }
-
-#BottomLayer nav {
-    /* background-color: white; */
-}
-
 #BottomLayer ul {
-    /* display: flex;
-    justify-content: flex-start;
-    margin-top: 0px;
-    margin-bottom: 0px; */
     margin-left: 10px;
     padding: 0.5rem;
     padding-left: 0px;
@@ -43,13 +33,8 @@
 
 #BottomLayer ul li {
     display: inline-block;
-    /* vertical-align: flex-end; */
-    /* height: 50px;  */
     list-style-type: none;
     margin-right: 4px;
-    /* height: inherit; */
-    /* margin-left: 10px;
-    margin-right: 0px; */
 }
 
 #BottomLayer ul li:nth-child(even) {
@@ -57,11 +42,8 @@
     height: 1.2rem;
     background-color: rgb(128, 128, 128);
     transform: translateY(-30%);
-    /* line-height: 0.5rem; */
     border-radius: 50%;
     margin-right: 12px;
-    /* font-weight: bold;
-    color: white; */
 }
 
 #BottomLayer ul li p {
@@ -93,7 +75,6 @@
 #BasketItem, #RecommendationItem {
     display: flex;
     border-top: 0.5px solid rgba(185, 185, 185, 0.4);
-    /* background-color: white; */
 }
 
 .productImage img{
