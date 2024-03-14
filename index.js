@@ -35,7 +35,7 @@
             <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
         </ul>
         `;
-        BottomLayer.appendChild(nav);    
+        parent.appendChild(nav);    
 
         //Adding div that contains all items - needed for scrollbar
         const productLayer = document.createElement('div');
