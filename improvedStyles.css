@@ -81,10 +81,12 @@
 /* Items */
 
 #productlayer {
-    overflow-y: scroll;
+    flex: 1 1 0;
     background-color: darkkhaki;
+    /* overflow-y: scroll;
+
     scrollbar-width: none;
-    height: 300px;
+    height: 300px; */
 }
 /* 
 #BasketItem, #RecommendationItem {
