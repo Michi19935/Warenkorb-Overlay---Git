@@ -1,91 +1,92 @@
 
- #parent {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        width: 351px;
-        z-index: 999;
-    }
+#parent {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 351px;
+    z-index: 999;
+}
 
-    #TopLayerImage {
-        flex: 0 1 513px;
-        background: url('./Canis\ Ovleray\ Image.png'); 
-    }
+#TopLayerImage {
+    flex: 0 1 513px;
+    background: url('./Canis\ Ovleray\ Image.png'); 
+}
 
-    #BottomLayer {
-        flex: 1 1 0;
-    }
+#BottomLayer {
+    flex: 1 1 0;
+}
 
-    #CloseButton {
-        font-size: medium;
-        color: white;
-        position: fixed;
-        left: 351px;
-        background-color: #e2e2e2;
-    }
+#CloseButton {
+    font-size: medium;
+    color: white;
+    position: fixed;
+    left: 351px;
+    background-color: #e2e2e2;
+}
 
-    #BottomLayer nav {
-        background-color: white;
-    }
-    
-    #BottomLayer ul {
-        /* display: flex;
-        justify-content: flex-start;
-        margin-top: 0px;
-        margin-bottom: 0px; */
-        margin-left: 10px;
-        padding: 0.5rem;
-        padding-left: 0px;
-    }
-    
-    #BottomLayer ul li {
-        display: inline-block;
-        /* vertical-align: flex-end; */
-        /* height: 50px;  */
-        list-style-type: none;
-        margin-right: 4px;
-        /* height: inherit; */
-        /* margin-left: 10px;
-        margin-right: 0px; */
-    }
-    
-    #BottomLayer ul li:nth-child(even) {
-        width: 1.2rem;
-        height: 1.2rem;
-        background-color: rgb(128, 128, 128);
-        transform: translateY(-30%);
-        /* line-height: 0.5rem; */
-        border-radius: 50%;
-        margin-right: 12px;
-        /* font-weight: bold;
-        color: white; */
-    }
-    
-    #BottomLayer ul li p {
-        color: white;
-        font-size: 80%;
-        text-align: center;
-        transform: translatey(60%);  
-    }
-    
-    
-    #BottomLayer ul .inactive {
-        color: rgb(197, 197, 197);
-    }
-    
-    #BottomLayer ul .inactive li:nth-child(even) {
-        background-color: rgb(189, 189, 189);
-    }
+#BottomLayer nav {
+    background-color: white;
+}
 
-    /* Items */
+#BottomLayer ul {
+    /* display: flex;
+    justify-content: flex-start;
+    margin-top: 0px;
+    margin-bottom: 0px; */
+    margin-left: 10px;
+    padding: 0.5rem;
+    padding-left: 0px;
+}
+
+#BottomLayer ul li {
+    display: inline-block;
+    /* vertical-align: flex-end; */
+    /* height: 50px;  */
+    list-style-type: none;
+    margin-right: 4px;
+    /* height: inherit; */
+    /* margin-left: 10px;
+    margin-right: 0px; */
+}
+
+#BottomLayer ul li:nth-child(even) {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: rgb(128, 128, 128);
+    transform: translateY(-30%);
+    /* line-height: 0.5rem; */
+    border-radius: 50%;
+    margin-right: 12px;
+    /* font-weight: bold;
+    color: white; */
+}
+
+#BottomLayer ul li p {
+    color: white;
+    font-size: 80%;
+    text-align: center;
+    transform: translatey(60%);  
+}
+
+
+#BottomLayer ul .inactive {
+    color: rgb(197, 197, 197);
+}
+
+#BottomLayer ul .inactive li:nth-child(even) {
+    background-color: rgb(189, 189, 189);
+}
+
+/* Items */
 
 #productlayer {
     overflow-y: scroll;
+    background-color: darkkhaki;
     scrollbar-width: none;
     height: 300px;
 }
-
+/* 
 #BasketItem, #RecommendationItem {
     display: flex;
     border-top: 0.5px solid rgba(185, 185, 185, 0.4);
@@ -132,4 +133,4 @@
 
 .CTAs, .productPrice, .productTitle {
     margin-bottom: 10px;
-}
+} */
