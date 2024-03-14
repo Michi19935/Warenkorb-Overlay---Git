@@ -3,6 +3,13 @@
         parent.id = 'parent';
         document.body.appendChild(parent);
 
+        //Adding CSS file to DOM
+        const CustomCSS = document.createElement('link');
+        CustomCSS.rel = 'stylesheet';
+        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
+        document.head.appendChild(CustomCSS);
+        document.head.prepend(CustomCSS);
+
         const TopLayerImage = document.createElement('div');
         TopLayerImage.id = 'TopLayerImage';
         parent.appendChild(TopLayerImage);
@@ -20,13 +27,6 @@
         const JQuery = document.createElement('script');
         JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
         document.head.appendChild(JQuery);
-
-        //Adding CSS file to DOM
-        const CustomCSS = document.createElement('link');
-        CustomCSS.rel = 'stylesheet';
-        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
-        document.head.appendChild(CustomCSS);
-        document.head.prepend(CustomCSS);
 
         const nav = document.createElement('nav');
         nav.innerHTML = `
