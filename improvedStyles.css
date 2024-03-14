@@ -77,3 +77,59 @@
     #BottomLayer ul .inactive li:nth-child(even) {
         background-color: rgb(189, 189, 189);
     }
+
+    /* Items */
+
+#productlayer {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 300px;
+}
+
+#BasketItem, #RecommendationItem {
+    display: flex;
+    border-top: 0.5px solid rgba(185, 185, 185, 0.4);
+    background-color: white;
+}
+
+.productImage img{
+    flex: 1 1 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: calc(351px/4);
+}
+
+.productDetails {
+    flex: 1 1 0;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+#JetztKaufen, #ZumProdukt {
+    display: inline-block;
+    border: none;
+    margin-left: 10px;
+    padding: 8px;
+    text-transform: uppercase;
+    animation: none;
+    background-color: #A2BA24;
+}
+
+#JetztKaufen a{
+    background-color: #A2BA24;
+    color: white;
+    animation: none;
+    transition: none;
+}
+
+#ZumProdukt {
+    background-color: rgb(225, 225, 225);
+}
+
+.productTitle {
+    margin-top: 12px;
+}
+
+.CTAs, .productPrice, .productTitle {
+    margin-bottom: 10px;
+}
