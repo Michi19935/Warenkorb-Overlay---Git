@@ -1,3 +1,11 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: bold;
+    font-size: 1rem;
+    background-color: #605f6138;
+}
 
 #parent {
     position: absolute;
@@ -6,8 +14,156 @@
     height: 100%;
     width: 351px;
     margin: 0 auto;
-    background-color: grey;
     /* transform: translate(-50%, -50%) scale(1);  */
     z-index: 999;
+}
+
+#TopLayerImage {
+    position: fixed;
+    width: inherit;
+    height: 513px;
+    left: 0%;
+    top: 0%;
+    background: url('./Canis\ Ovleray\ Image.png') no-repeat; 
+    z-index: 110;
+}
+
+#BottomLayer {
+    position: fixed;
+    left: 0%;
+    top: 513px;
+    width: inherit;
+    height: inherit;
+}
+
+@media only screen and (max-height: 700px) {
+    #TopLayerImage {
+        height: 50%;
+    }
+
+    #BottomLayer {
+        top: 279px;
+    }
+}
+
+#BottomLayer nav {
+    background-color: white;
+}
+
+#BottomLayer ul {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    padding: 0.5rem;
+    padding-left: 0px;
+    height: inherit;
+}
+
+#BottomLayer ul li {
+    display: inline-block;
+    vertical-align: flex-end;
+    height: 50px;
+    list-style-type: none;
+    margin-right: 4px;
+    height: inherit;
+    /* margin-left: 10px;
+    margin-right: 0px; */
+}
+
+#BottomLayer ul li:nth-child(even) {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: rgb(128, 128, 128);
+    transform: translateY(-30%);
+    line-height: 0.5rem;
+    border-radius: 50%;
+    margin-right: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+#BottomLayer ul li p {
+    color: white;
+    font-size: 80%;
+    text-align: center;
+    transform: translatey(60%);  
+}
+
+
+#BottomLayer ul .inactive {
+    color: rgb(197, 197, 197);
+}
+
+#BottomLayer ul .inactive li:nth-child(even) {
+    background-color: rgb(189, 189, 189);
+}
+
+#CloseButton {
+    font-size: medium;
+    color: white;
+    position: fixed;
+    left: 351px;
+    width: 30px;
+    height: 30px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+/* Items */
+
+#productlayer {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: 300px;
+}
+
+#BasketItem, #RecommendationItem {
+    display: flex;
+    border-top: 0.5px solid rgba(185, 185, 185, 0.4);
+    background-color: white;
+}
+
+.productImage img{
+    flex: 1 1 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: calc(351px/4);
+}
+
+.productDetails {
+    flex: 1 1 0;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+#JetztKaufen, #ZumProdukt {
+    display: inline-block;
+    border: none;
+    margin-left: 10px;
+    padding: 8px;
+    text-transform: uppercase;
+    animation: none;
+    background-color: #A2BA24;
+}
+
+#JetztKaufen a{
+    background-color: #A2BA24;
+    color: white;
+    animation: none;
+    transition: none;
+}
+
+#ZumProdukt {
+    background-color: rgb(225, 225, 225);
+}
+
+.productTitle {
+    margin-top: 12px;
+}
+
+.CTAs, .productPrice, .productTitle {
+    margin-bottom: 10px;
 }
 
