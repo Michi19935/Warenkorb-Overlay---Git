@@ -11,14 +11,14 @@
 
     #TopLayerImage {
         flex: 0 1 513px;
-        background-color: blue;
         width: inherit;
         background-color: pink;
         /* background: url('./Canis\ Ovleray\ Image.png'); */
     }
 
-    .BottomLayer {
+    #BottomLayer {
         flex: 1 1 0;
+        width: inherit;
         /* position: absolute; */
         background-color: green;
     }
