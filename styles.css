@@ -42,7 +42,7 @@ body {
     }
 
     #BottomLayer {
-        height: 50%;
+        top: 265px;
     }
 }
 
