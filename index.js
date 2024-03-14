@@ -6,7 +6,7 @@
         //Adding CSS file to DOM
         const CustomCSS = document.createElement('link');
         CustomCSS.rel = 'stylesheet';
-        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
+        CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedtyles.css';
         document.head.appendChild(CustomCSS);
         document.head.prepend(CustomCSS);
 
@@ -35,12 +35,12 @@
             <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
         </ul>
         `;
-        parent.appendChild(nav);    
+        BottomLayer.appendChild(nav);    
 
         //Adding div that contains all items - needed for scrollbar
         const productLayer = document.createElement('div');
         productLayer.id = 'productlayer'
-        BottomLayer.appendChild(productLayer);   
+        parent.appendChild(productLayer);   
         
         const Items = (PImage,Title,Price,Deeplink,Type) => {
            const items = document.createElement('div');
