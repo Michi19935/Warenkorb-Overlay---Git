@@ -84,10 +84,10 @@
 #productlayer {
     flex: 1 1 0;
     background-color: darkkhaki;
-    /* overflow-y: scroll;
+    overflow-y: scroll;
 
-    scrollbar-width: none;
-    height: 300px; */
+    scrollbar-width: none
+
 }
 
 #BasketItem, #RecommendationItem {
@@ -136,4 +136,4 @@
 
 .CTAs, .productPrice, .productTitle {
     margin-bottom: 10px;
-}
+} 
