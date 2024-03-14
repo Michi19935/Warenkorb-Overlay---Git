@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-
 
         const parent = document.createElement('div');
         parent.id = 'parent';
@@ -54,7 +43,8 @@
         BottomLayer.appendChild(productLayer);   
         
         const Items = (PImage,Title,Price,Deeplink,Type) => {
-            console.log(PImage);
+            console.log('items settter',PImage);
+            console.log('items settter',Title);
            const items = document.createElement('div');
            items.id = Type;
            items.innerHTML =  `  
@@ -85,17 +75,20 @@
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">`;
         document.head.appendChild(GoogleFontsPoppins);
   
-                const addtoCartProductPages = () => {
-                    const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
-                    addtoCartProductPages.addEventListener('click', (e)=>{
-                    const Selectoren = ['.wd-carousel-item a img','h1.product_title','.woocommerce-Price-amount',];
+        const addtoCartProductPages = () => {
+            const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
 
-                    const PImage = document.querySelector(Selectoren[0]).src;
-                    const Title = document.querySelector(Selectoren[1]).innerText;
-                    const Price = document.querySelector(Selectoren[2]).innerText;
-                    const Deeplink = window.location.href;
+            addtoCartProductPages.addEventListener('click', (e)=>{
+                const Selectoren = ['.wd-carousel-item a img','h1.product_title','p.price',];
 
-            });}
+                const PImage = document.querySelector(Selectoren[0]).src;
+                const Title = document.querySelector(Selectoren[1]).innerText;
+                const Price = document.querySelector(Selectoren[2]).innerText;
+                const Deeplink = window.location.href;
+
+            AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem');
+            });
+        }
 
 
         const titlesSelect = [...document.querySelectorAll('.wd-entities-title a')];
@@ -108,7 +101,36 @@
 
         //GetValues for Recommendations ProductPage
 
-        const GetImagesRec = (ChromeNodes) => {
+        //as the RecommendationImages are lazyloaded and can only be seen after viewing them,
+        //the images need to get from another source. So I am matching the titles with an alternative source of images I found
+        const alternativeImages = (titles) => {
+            const ImageRecSelect = [...document.querySelectorAll('.swiper-slide-inner img')];
+            const Images = ImageRecSelect.map((value)=>{return value.getAttribute('data-lazy-src')});
+            const uniq = [...new Set(Images)];
+            console.log(titles[0], 'titles 0'),
+            console.log(uniq, 'uniq')
+
+            function filterItems(uniq, query) {
+                return uniq.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
+            }
+
+            const url1 = filterItems(uniq, titles[0].slice(0,6)); 
+            const url2 = filterItems(uniq, titles[1].slice(0,6)); 
+            const url3 = filterItems(uniq, titles[2].slice(0,6)); 
+            const url4 = filterItems(uniq, titles[3].slice(0,6)); 
+            const alternativeImages = [url1[0],url2[0],url3[0],url4[0]];
+            return alternativeImages
+        }
+
+        const GetImagesRec = (ChromeNodes, titles) => {
+            
+            if(window.location.href.includes('produkte')){
+                console.log('yesss',);
+                const imageUrls = alternativeImages(titles);
+                console.log('Caller', imageUrls);
+                return imageUrls
+            };
+
             const array = ChromeNodes.map((value)=>{return value.getAttribute('src')});
             const filteredArray = array.filter((word) => (!word.includes('B02') && !word.includes('b02')));
             return filteredArray
@@ -159,17 +181,13 @@
         }
 
         const GetValuesRec = () => {
-            //On all other pages there are no rec items so we just take the last items on the page . therefore reverse() array
+        
             const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
             const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
             const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')].slice(0,4);
             const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')].slice(0,4);
-            console.log('get values func')
-            console.log(titlesRecSelect);
-            console.log(DeeplinkRecSelect);
-            console.log(PriceRecSelect);
-            console.log(ImageRecSelect);
             const amountOfImages = ImageRecSelect.length;
+            console.log('get values func', ImageRecSelect);
             //Add Product to "Recommendation-Section"
             AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
@@ -180,10 +198,13 @@
 
             if (Type == 'RecommendationItem'){
                 //Adding several items
-                const PImage = GetImagesRec(ImageSel);
+                const Title = GetTitlesRec(TitleSel);
+                //title is necessary to find alternative for lazy loaded images
+                const PImage = GetImagesRec(ImageSel, Title);
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
-                const Title = GetTitlesRec(TitleSel);
+
+                console.log('add to overlay func', PImage);
 
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
             } else if(Type == 'BasketItem') {
@@ -196,6 +217,7 @@
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
                 for(i=0; i <4; i++){
+                    console.log('pre insert func',ImageRec[0]);
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
@@ -209,7 +231,6 @@
         if(window.location.href.includes('produkte')){
             GetValuesRec();
             addtoCartProductPages();
-
         } else {
             GetValuesRec();
             addtoCartAllOtherPages();
@@ -236,6 +257,3 @@
             }
         })
 
-    </script>
-</body>
-</html>
