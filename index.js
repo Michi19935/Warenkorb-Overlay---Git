@@ -43,9 +43,13 @@
         BottomLayer.appendChild(productLayer);   
         
         const Items = (PImage,Title,Price,Deeplink,Type) => {
-            console.log('items settter',PImage);
-            console.log('items settter',Title);
            const items = document.createElement('div');
+           //Backup fürs Erste
+           if (PImage == undefined){
+            PImage = 'https://anicanis.de/wp-content/uploads/elementor/thumbs/AniCanis_Seealgenmehl_klein_B01-pp8v8fxp6i1f3t8h57csyzp3pic5teyi69q8ns2br4.jpg';
+            alert('test');
+           }
+
            items.id = Type;
            items.innerHTML =  `  
             
@@ -125,9 +129,7 @@
         const GetImagesRec = (ChromeNodes, titles) => {
             
             if(window.location.href.includes('produkte')){
-                console.log('yesss',);
                 const imageUrls = alternativeImages(titles);
-                console.log('Caller', imageUrls);
                 return imageUrls
             };
 
@@ -187,11 +189,9 @@
             const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')].slice(0,4);
             const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')].slice(0,4);
             const amountOfImages = ImageRecSelect.length;
-            console.log('get values func', ImageRecSelect);
             //Add Product to "Recommendation-Section"
             AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
-            RecommendationCounter(ImageRecSelect);
         }
 
         const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type) => {
@@ -204,7 +204,8 @@
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
 
-                console.log('add to overlay func', PImage);
+                        //Determine amount of recommendations
+                document.querySelector('#recommendationCounter').innerHTML = `<p>${PImage.length}</p>`;
 
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
             } else if(Type == 'BasketItem') {
@@ -223,10 +224,6 @@
             }
         }
 
-        //Determine amount of recommendations
-        const RecommendationCounter = (ImageRecSelect) => {
-            document.querySelector('#recommendationCounter').innerHTML = `<p>${ImageRecSelect.length}</p>`;
-        }
 
         if(window.location.href.includes('produkte')){
             GetValuesRec();
