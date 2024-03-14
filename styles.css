@@ -8,28 +8,26 @@ body {
 }
 
 #parent {
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    height: 100%;
-    width: 351px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 513px;
     margin: 0 auto;
     /* transform: translate(-50%, -50%) scale(1);  */
     z-index: 999;
 }
 
 #TopLayerImage {
-    position: fixed;
+    /* position: fixed; */
     width: inherit;
-    height: 513px;
-    left: 0%;
-    top: 0%;
+    flex: 0 1 513px;
     background: url('./Canis\ Ovleray\ Image.png') no-repeat; 
     z-index: 110;
 }
 
 #BottomLayer {
-    position: fixed;
+    flex: 1 1 0;
     left: 0%;
     top: 513px;
     width: inherit;

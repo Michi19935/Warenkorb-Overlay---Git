@@ -47,7 +47,6 @@
            //Backup fürs Erste
            if (PImage == undefined){
             PImage = 'https://anicanis.de/wp-content/uploads/elementor/thumbs/AniCanis_Seealgenmehl_klein_B01-pp8v8fxp6i1f3t8h57csyzp3pic5teyi69q8ns2br4.jpg';
-            alert('test');
            }
 
            items.id = Type;
