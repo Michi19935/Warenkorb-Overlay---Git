@@ -1,12 +1,9 @@
 
-#parent {
-    position: fixed;
-    left: 0%;
-    top: 0%;
-    height: 100%;
-    width: 351px;
-    margin: 0 auto;
-    /* transform: translate(-50%, -50%) scale(1);  */
-    z-index: 999;
-    background-color: black;
-}
+ #parent {
+        position: fixed;
+        height: 100vh;
+        width: 351px;
+        z-index: 999;
+        background-color: black;
+    }
+
