@@ -38,6 +38,44 @@
         margin-left: 10px;
         padding: 0.5rem;
         padding-left: 0px;
-        /* height: inherit; */
+        height: inherit;
     }
-
+    
+    #BottomLayer ul li {
+        display: inline-block;
+        vertical-align: flex-end;
+        height: 50px;
+        list-style-type: none;
+        margin-right: 4px;
+        height: inherit;
+        /* margin-left: 10px;
+        margin-right: 0px; */
+    }
+    
+    #BottomLayer ul li:nth-child(even) {
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: rgb(128, 128, 128);
+        transform: translateY(-30%);
+        line-height: 0.5rem;
+        border-radius: 50%;
+        margin-right: 12px;
+        font-weight: bold;
+        color: white;
+    }
+    
+    #BottomLayer ul li p {
+        color: white;
+        font-size: 80%;
+        text-align: center;
+        transform: translatey(60%);  
+    }
+    
+    
+    #BottomLayer ul .inactive {
+        color: rgb(197, 197, 197);
+    }
+    
+    #BottomLayer ul .inactive li:nth-child(even) {
+        background-color: rgb(189, 189, 189);
+    }
