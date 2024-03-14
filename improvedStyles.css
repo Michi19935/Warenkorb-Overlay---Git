@@ -6,14 +6,12 @@
         height: 100vh;
         width: 351px;
         z-index: 999;
-        /* background-color: black; */
     }
 
     #TopLayerImage {
         flex: 0 1 513px;
         width: inherit;
-        background-color: pink;
-        /* background: url('./Canis\ Ovleray\ Image.png'); */
+        background: url('./Canis\ Ovleray\ Image.png'); 
     }
 
     #BottomLayer {
