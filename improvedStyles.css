@@ -1,9 +1,23 @@
 
  #parent {
         position: fixed;
+        display: flex;
+        flex-direction: column;
         height: 100vh;
         width: 351px;
         z-index: 999;
         background-color: black;
     }
 
+    #TopLayerImage {
+        flex: 0 1 513px;
+        background-color: blue;
+        width: inherit;
+        background: url('./Canis\ Ovleray\ Image.png');
+    }
+
+    .BottomLayer {
+        flex: 1 1 0;
+        /* position: absolute; */
+        background-color: green;
+    }
