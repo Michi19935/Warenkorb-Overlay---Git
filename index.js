@@ -211,13 +211,15 @@
                 //Adding only one item
                 const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
                 itemsParam.classList = Type;
+                //Store item in cookie
+                document.cookie = `Image=${ImageSel} Title=${TitleSel} Price=${PriceSel} Deeplink=${DeeplinkSel}`;
+                localStorage.setItem(`BasketItem`,`${ImageSel};${PriceSel};${DeeplinkSel};${TitleSel}` )
             }
 
         };
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
                 for(i=0; i <4; i++){
-                    console.log('pre insert func',ImageRec[0]);
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
