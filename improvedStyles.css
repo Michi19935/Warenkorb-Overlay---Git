@@ -9,7 +9,7 @@
 }
 
 #TopLayerImage {
-    flex: 0 1 0;
+    flex: 0 1 531px;
     background: url('./Canis\ Ovleray\ Image.png'); 
 }
 
@@ -72,7 +72,7 @@
 /* Items */
 
 #productlayer {
-    flex: 0 1 176px;
+    flex: 1 1 0;
     overflow-y: scroll;
     scrollbar-width: none;
 }
