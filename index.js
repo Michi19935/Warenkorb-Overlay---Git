@@ -1,7 +1,7 @@
 
         const parent = document.createElement('div');
         parent.id = 'parent';
-        document.body.appendChild(parent);
+        document.body.prepend(parent);
 
         //Adding CSS file to DOM
         const CustomCSS = document.createElement('link');
