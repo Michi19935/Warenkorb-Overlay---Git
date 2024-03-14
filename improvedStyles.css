@@ -1,9 +1,9 @@
 
 #parent {
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 513px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     background-color: black;
     /* transform: translate(-50%, -50%) scale(1);  */
     z-index: 999;
