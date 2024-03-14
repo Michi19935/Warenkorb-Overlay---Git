@@ -82,11 +82,11 @@ body {
 }
 
 
-#BottomLayer ul li .inactive {
+#BottomLayer ul .inactive {
     color: rgb(225, 225, 225);
 }
 
-#BottomLayer ul li:nth-child(even) .inactive{
+#BottomLayer ul .inactive li:nth-child(even) {
     background-color: rgb(189, 189, 189);
 }
 
