@@ -65,7 +65,7 @@
     text-align: center;
 }
 
-#BottomLayer ul li:nth-child(even) p {
+#basketCounter p, #recommendationCounter p {
     position: absolute;
     left: 6px;
     top: -3px;
