@@ -57,18 +57,13 @@
     width: 1.2rem;
     height: 1.2rem;
     background-color: rgb(128, 128, 128);
-    transform: translateY(-30%);
+    transform: translateY(25%);
     border-radius: 50%;
     margin-right: 12px;
-}
-
-#BottomLayer ul li p {
     color: white;
     font-size: 80%;
     text-align: center;
-    transform: translatey(60%);  
 }
-
 
 #BottomLayer ul .inactive {
     color: rgb(197, 197, 197);
