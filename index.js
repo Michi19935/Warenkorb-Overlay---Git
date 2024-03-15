@@ -45,9 +45,6 @@
         const Items = (PImage,Title,Price,Deeplink,Type) => {
            const items = document.createElement('div');
            //Backup fürs Erste
-           if (PImage == undefined){
-            PImage = 'https://anicanis.de/wp-content/uploads/elementor/thumbs/AniCanis_Seealgenmehl_klein_B01-pp8v8fxp6i1f3t8h57csyzp3pic5teyi69q8ns2br4.jpg';
-           }
 
            items.id = Type;
            items.innerHTML =  `  
@@ -64,9 +61,8 @@
                     </div>
                 </div> 
             `;
-
             document.querySelector('#productlayer').appendChild(items);
-                return items
+            return items
         }
 
         // BottomLayer.appendChild(nav); 
@@ -82,14 +78,15 @@
             const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
 
             addtoCartProductPages.addEventListener('click', (e)=>{
-                const Selectoren = ['.wd-carousel-item a img','h1.product_title','p.price',];
+                const Selectoren = ['.wd-carousel-item a img','h1.product_title','p.price','.single_add_to_cart_button'];
 
                 const PImage = document.querySelector(Selectoren[0]).src;
                 const Title = document.querySelector(Selectoren[1]).innerText;
                 const Price = document.querySelector(Selectoren[2]).innerText;
+                const Id = document.querySelector(Selectoren[3]).getAttribute('value');
                 const Deeplink = window.location.href;
 
-            AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem');
+            AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',Id);
             });
         }
 
@@ -98,10 +95,10 @@
         const titles = titlesSelect.map((title)=>{return title.innerText});
 
         //Determine amount of items in cart as seen in this selector
-        const basketAmountString = document.querySelector('.wd-cart-number').textContent; //Z.B. "37 Artikel"
+        const basketAmountString = document.querySelector('span.wd-cart-number').textContent; //Z.B. "37 Artikel"
         const basketAmountNumber = basketAmountString.slice(0,2); //Z.B. "37"
-        document.querySelector('#basketCounter').innerHTML = `<p>${basketAmountNumber}</p>`;
-
+        console.log('basketAmount',basketAmountNumber);
+        document.querySelector('#basketCounter').innerHTML = `<p>${(basketAmountNumber)}</p>`;
         //GetValues for Recommendations ProductPage
 
         //as the RecommendationImages are lazyloaded and can only be seen after viewing them,
@@ -121,7 +118,11 @@
             const url2 = filterItems(uniq, titles[1].slice(0,6)); 
             const url3 = filterItems(uniq, titles[2].slice(0,6)); 
             const url4 = filterItems(uniq, titles[3].slice(0,6)); 
-            const alternativeImages = [url1[0],url2[0],url3[0],url4[0]];
+            const url5 = filterItems(uniq, titles[4].slice(0,6)); 
+            const url6 = filterItems(uniq, titles[5].slice(0,6)); 
+            const url7 = filterItems(uniq, titles[6].slice(0,6)); 
+            const url8 = filterItems(uniq, titles[7].slice(0,6)); 
+            const alternativeImages = [url1[0],url2[0],url3[0],url4[0],url5[0],url6[0],url7[0],url8[0]];
             return alternativeImages
         }
 
@@ -164,7 +165,6 @@
                 button.id = (`eventListener ${index}`);
                 button.addEventListener('click',()=>{
                     const productID = button.getAttribute('data-product_id');
-                    
                     const titlesSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper h3 a`);
                     const DeeplinkSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper h3 a`);
                     const PriceSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper span.price`);
@@ -174,62 +174,115 @@
                     const Title = titlesSelect.innerText;
                     const Price = PriceSelect.innerText;
                     const Deeplink = window.location.href;
+                    
 
                     //Add Product to "Warenkorb-Section"
-                    AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem');
+                    AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',productID);
                 })
             })
         }
 
         const GetValuesRec = () => {
         
-            const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
-            const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')].slice(0,4);
-            const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')].slice(0,4);
-            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')].slice(0,4);
+            const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
+            const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
+            const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
+            const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
             const amountOfImages = ImageRecSelect.length;
             //Add Product to "Recommendation-Section"
             AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
         }
 
-        const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type) => {
+        const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
             if (Type == 'RecommendationItem'){
                 //Adding several items
                 const Title = GetTitlesRec(TitleSel);
                 //title is necessary to find alternative for lazy loaded images
                 const PImage = GetImagesRec(ImageSel, Title);
+                console.log('Tile: ',Title,'Image',PImage);
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
 
                 //Determine amount of recommendations
-                document.querySelector('#recommendationCounter').innerHTML = `<p>${PImage.length}</p>`;
+                document.querySelector('#recommendationCounter').innerHTML = `${PImage.length}`;
 
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
             } else if(Type == 'BasketItem') {
                 //Adding only one item
                 const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
                 itemsParam.classList = Type;
-                //Store item in cookie
-                document.cookie = `Image=${ImageSel} Title=${TitleSel} Price=${PriceSel} Deeplink=${DeeplinkSel}`;
-                localStorage.setItem(`BasketItem`,`${ImageSel};${PriceSel};${DeeplinkSel};${TitleSel}` )
+
+                //Store item in Local Storage
+                    let cart = JSON.parse(localStorage.getItem('cart'));
+                    if (cart == null){
+                        cart = []
+                    }
+                    const product = {
+                        Id,
+                        TitleSel,
+                        DeeplinkSel,
+                        PriceSel,
+                        ImageSel,
+                    }
+                    cart.push(product)
+                    localStorage.setItem('cart', JSON.stringify(cart))
+
             }
 
         };
 
         const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
-                for(i=0; i <4; i++){
+            let undefValues = 0;
+                for(i=0; i <ImageRec.length; i++){
+                if(ImageRec[i] == undefined){
+                    undefValues++;
+                    continue; 
+                }
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
+            console.log('amountCalc:', (ImageRec.length - undefValues));
+            document.querySelector('#recommendationCounter').innerHTML = `${(ImageRec.length - undefValues)}`;
+            
         }
 
+        //Warenkorb Seite Remove Item & Restore Item
+
+
+
+        if (window.location.href == 'https://anicanis.de/warenkorb/'){
+            document.body.addEventListener('click', (e)=> {
+                let cart = JSON.parse(localStorage.getItem('cart'));
+                const product_id = e.target.getAttribute('data-product_id');
+                let removedObj;
+
+                if(e.target.classList == 'remove'){
+                    //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
+                    removedObj = cart.filter(item => item.Id == product_id);
+                    let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
+
+                    localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
+
+                } 
+            })
+        }
+
+        const GetLocalStorageItems = () => {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            for (i = 0; i <= cart.length; i++){
+                AddtoOverlay(cart[i].ImageSel,cart[i].PriceSel,cart[i].DeeplinkSelect,cart[i].TitleSel,'BasketItem',cart[i].Id);
+            }
+
+        }
 
         if(window.location.href.includes('produkte')){
+            GetLocalStorageItems();
             GetValuesRec();
             addtoCartProductPages();
         } else {
+            GetLocalStorageItems();
             GetValuesRec();
             addtoCartAllOtherPages();
         }
@@ -254,4 +307,4 @@
                 $(parent).hide();
             }
         })
-
+        
