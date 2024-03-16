@@ -152,3 +152,12 @@
     }
 
 }
+
+@media only screen and (max-height: 582px) {
+
+    #TopLayerImage {
+        flex: 1 1 0;
+        background: url('./Images/canis\ overlay\ image\ ab\ 500px.png'); 
+    }
+
+}
