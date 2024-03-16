@@ -220,7 +220,8 @@
                         //Wenn noch kein local storage object da ist, anlegen
                         localStorage.setItem('cart', StringifyedArray);
                     } else {
-                        let cart = JSON.parse(localStorage.getItem('cart'));
+                        // let cart = JSON.parse(localStorage.getItem('cart'));
+                        //Checking if item is alreaday added to the cart
                         DuplicateCheck = cart.filter(item => item.Id != Id);
                         if(DuplicateCheck[0] != null){
                             DuplicateCheck.push(product);
@@ -228,8 +229,8 @@
                         }
                     }
 
-                    //Increasing Basket Counter
-                    document.querySelector('#basketCounter').innerHTML = `<p>${DuplicateCheck.length}</p>`;
+                    //Increasing Basket Counter +1 
+                    document.querySelector('#basketCounter').innerHTML = `<p>${cart.length+1}</p>`;
 
             }
 
@@ -245,8 +246,7 @@
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
-            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`;
-            
+            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`;  
         }
 
         //Warenkorb Seite Remove Item & Restore Item

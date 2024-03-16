@@ -35,6 +35,7 @@
     display: inline-block;
     list-style-type: none;
     margin-right: 4px;
+    cursor: pointer;
 }
 
 #BottomLayer ul li:nth-child(even) {
