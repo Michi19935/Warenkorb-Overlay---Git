@@ -33,10 +33,6 @@
         <ul>
             <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"></li></span>
             <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="searchBox" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg>
-            <input type="text" placeholder="Produktsuche" id="overlaySearch" style="display: none">
         </ul>
         `;
         BottomLayer.appendChild(nav);    
@@ -295,17 +291,15 @@
 
         BottomLayer.addEventListener('click', (e)=> {
             if(e.target.classList == 'Recommendations'){
-                $('.RecItem').show();
+                $('.RecItem').show('slow');
                 $('.BasketItem').hide();
                 $('#basket').addClass('inactive');
                 $('#recommendations').removeClass('inactive');
             } else if (e.target.classList == 'Basket'){
                 $('.RecItem').hide();
-                $('.BasketItem').show();
+                $('.BasketItem').show('slow');
                 $('#basket').removeClass('inactive');
                 $('#recommendations').addClass('inactive');
-            } else if (e.target.classList == 'searchBox'){
-                $('#overlaySearch').toggle('slow');
             }
         });
 

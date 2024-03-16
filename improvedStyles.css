@@ -54,7 +54,7 @@
 #basketCounter p, #recommendationCounter p {
     position: absolute;
     left: 6px;
-     top: -3px; /*nur bei einstelligen Sachen gültig */
+    top: -3px; /*nur bei einstelligen Sachen gültig */
 }
 
 #BottomLayer ul .inactive {
@@ -77,9 +77,15 @@ span#searchbtn {
 /* Items */
 
 #productlayer {
-    flex: 0 1 260px;
+    flex: 1 1 0;
     overflow-y: scroll;
     scrollbar-width: none;
+}
+
+@media only screen and (max-height: 841px) {
+    #productlayer {
+        flex: 1 1 260px;
+    }
 }
 
 #BasketItem, #RecommendationItem {
@@ -130,7 +136,6 @@ span#searchbtn {
 } 
 
 @media only screen and (max-height: 766px) {
-
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
@@ -138,7 +143,6 @@ span#searchbtn {
 }
 
 @media only screen and (max-height: 690px) {
-
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 690px.png'); 
@@ -147,7 +151,6 @@ span#searchbtn {
 }
 
 @media only screen and (max-height: 635px) {
-
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
@@ -156,7 +159,6 @@ span#searchbtn {
 }
 
 @media only screen and (max-height: 582px) {
-
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 582px.png'); 
@@ -165,7 +167,6 @@ span#searchbtn {
 }
 
 @media only screen and (max-height: 535px) {
-
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 500px.png'); 
