@@ -149,3 +149,19 @@
         flex: 0 1 262px; 
     }
 }
+
+@media only screen and (max-height: 635px) {
+
+    #TopLayerImage {
+        flex: 1 1 0;
+        background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
+    }
+
+    #BottomLayer {
+        flex: 0 1 54.8px;
+    }
+
+    #productlayer {
+        flex: 0 1 262px; 
+    }
+}
