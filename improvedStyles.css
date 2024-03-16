@@ -153,7 +153,7 @@
 
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (max-height: 535px) {
 
     #TopLayerImage {
         flex: 1 1 0;
