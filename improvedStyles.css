@@ -65,6 +65,15 @@
     background-color: rgb(189, 189, 189);
 }
 
+span#searchbtn {
+    margin-left: 40px;
+}
+
+.searchBox {
+    width: 50px;
+    display: inline-block;
+}
+
 /* Items */
 
 #productlayer {
