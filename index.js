@@ -94,11 +94,6 @@
         const titlesSelect = [...document.querySelectorAll('.wd-entities-title a')];
         const titles = titlesSelect.map((title)=>{return title.innerText});
 
-        //Determine amount of items in cart as seen in this selector
-        const basketAmountString = document.querySelector('span.wd-cart-number').textContent; //Z.B. "37 Artikel"
-        const basketAmountNumber = basketAmountString.slice(0,2); //Z.B. "37"
-        console.log('basketAmount',basketAmountNumber);
-        document.querySelector('#basketCounter').innerHTML = `<p>${(basketAmountNumber)}</p>`;
         //GetValues for Recommendations ProductPage
 
         //as the RecommendationImages are lazyloaded and can only be seen after viewing them,
@@ -107,8 +102,6 @@
             const ImageRecSelect = [...document.querySelectorAll('.swiper-slide-inner img')];
             const Images = ImageRecSelect.map((value)=>{return value.getAttribute('data-lazy-src')});
             const uniq = [...new Set(Images)];
-            console.log(titles[0], 'titles 0'),
-            console.log(uniq, 'uniq')
 
             function filterItems(uniq, query) {
                 return uniq.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
@@ -149,9 +142,6 @@
             return array
         }
 
-        // const shortendArray = array.slice(0,-4);
-        //     console.log(shortendArray)
-
         const GetDeeplinksRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.href});
             return array
@@ -175,7 +165,6 @@
                     const Price = PriceSelect.innerText;
                     const Deeplink = window.location.href;
                     
-
                     //Add Product to "Warenkorb-Section"
                     AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',productID);
                 })
@@ -188,7 +177,6 @@
             const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
             const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
             const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
-            const amountOfImages = ImageRecSelect.length;
             //Add Product to "Recommendation-Section"
             AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
@@ -201,24 +189,20 @@
                 const Title = GetTitlesRec(TitleSel);
                 //title is necessary to find alternative for lazy loaded images
                 const PImage = GetImagesRec(ImageSel, Title);
-                console.log('Tile: ',Title,'Image',PImage);
                 const Price = GetPriceRec(PriceSel);
                 const Deeplink = GetDeeplinksRec(DeeplinkSel);
 
-                //Determine amount of recommendations
-                document.querySelector('#recommendationCounter').innerHTML = `${PImage.length}`;
-
                 InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
+
             } else if(Type == 'BasketItem') {
+                
                 //Adding only one item
                 const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
                 itemsParam.classList = Type;
 
                 //Store item in Local Storage
                     let cart = JSON.parse(localStorage.getItem('cart'));
-                    if (cart == null){
-                        cart = []
-                    }
+
                     const product = {
                         Id,
                         TitleSel,
@@ -226,8 +210,26 @@
                         PriceSel,
                         ImageSel,
                     }
-                    cart.push(product)
-                    localStorage.setItem('cart', JSON.stringify(cart))
+
+                    const StringifyedObject = JSON.stringify(product);
+                    const StringifyedArray = JSON.stringify([product]);
+
+                    let DuplicateCheck = [];
+
+                    if (cart == null){
+                        //Wenn noch kein local storage object da ist, anlegen
+                        localStorage.setItem('cart', StringifyedArray);
+                    } else {
+                        let cart = JSON.parse(localStorage.getItem('cart'));
+                        DuplicateCheck = cart.filter(item => item.Id != Id);
+                        if(DuplicateCheck[0] != null){
+                            DuplicateCheck.push(product);
+                            localStorage.setItem('cart', JSON.stringify(DuplicateCheck));
+                        }
+                    }
+
+                    //Increasing Basket Counter
+                    document.querySelector('#basketCounter').innerHTML = `<p>${DuplicateCheck.length}</p>`;
 
             }
 
@@ -243,8 +245,7 @@
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
-            console.log('amountCalc:', (ImageRec.length - undefValues));
-            document.querySelector('#recommendationCounter').innerHTML = `${(ImageRec.length - undefValues)}`;
+            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`;
             
         }
 
@@ -253,6 +254,7 @@
 
 
         if (window.location.href == 'https://anicanis.de/warenkorb/'){
+
             document.body.addEventListener('click', (e)=> {
                 let cart = JSON.parse(localStorage.getItem('cart'));
                 const product_id = e.target.getAttribute('data-product_id');
@@ -261,31 +263,27 @@
                 if(e.target.classList == 'remove'){
                     //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
                     removedObj = cart.filter(item => item.Id == product_id);
+                    localStorage.setItem('backupCart', JSON.stringify(removedObj[0]));
                     let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
-
                     localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
-
-                } 
+                } else if (e.target.classList == 'restore-item'){
+                    let backup = JSON.parse(localStorage.getItem('backupCart'));
+                    cart.push(backup);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
             })
         }
 
         const GetLocalStorageItems = () => {
             let cart = JSON.parse(localStorage.getItem('cart'));
-            for (i = 0; i <= cart.length; i++){
-                AddtoOverlay(cart[i].ImageSel,cart[i].PriceSel,cart[i].DeeplinkSelect,cart[i].TitleSel,'BasketItem',cart[i].Id);
+            if(cart != null){
+                for (i = 0; i < cart.length; i++){
+                        AddtoOverlay(cart[i].ImageSel,cart[i].PriceSel,cart[i].DeeplinkSelect,cart[i].TitleSel,'BasketItem',cart[i].Id);
+                }
             }
-
+            
         }
 
-        if(window.location.href.includes('produkte')){
-            GetLocalStorageItems();
-            GetValuesRec();
-            addtoCartProductPages();
-        } else {
-            GetLocalStorageItems();
-            GetValuesRec();
-            addtoCartAllOtherPages();
-        }
 
         BottomLayer.addEventListener('click', (e)=> {
             if(e.target.classList == 'Recommendations'){
@@ -307,4 +305,14 @@
                 $(parent).hide();
             }
         })
+
+        if(window.location.href.includes('produkte')){
+            GetLocalStorageItems();
+            addtoCartProductPages();
+            GetValuesRec();
+        } else {
+            GetLocalStorageItems();
+            GetValuesRec();
+            addtoCartAllOtherPages();
+        }
         

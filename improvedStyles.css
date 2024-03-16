@@ -13,24 +13,8 @@
     background: url('./Canis\ Ovleray\ Image.png'); 
 }
 
-@media only screen and (max-height: 700px) {
-
-    #TopLayerImage {
-        flex: 1 1 0;
-        background: url('./Canis\ Ovleray\ Image.png'); 
-    }
-
-    #BottomLayer {
-        flex: 0 1 43.19px;
-    }
-
-    #productlayer {
-        flex: 0 1 266px; 
-    }
-}
-
 #BottomLayer {
-    flex: 0 1 43.19px;
+    flex: 0 1 55px;
 }
 
 #CloseButton {
@@ -42,7 +26,6 @@
 }
 #BottomLayer ul {
     margin-left: 10px;
-    padding: 0.5rem;
     padding-left: 0px;
     margin-bottom: 0px;
 }
@@ -63,12 +46,13 @@
     color: white;
     font-size: 80%;
     text-align: center;
+    font-weight: bold;
 }
 
 #basketCounter p, #recommendationCounter p {
     position: absolute;
     left: 6px;
-    top: 5px;
+     top: -3px; /*nur bei einstelligen Sachen gültig */
 }
 
 #BottomLayer ul .inactive {
@@ -133,3 +117,35 @@
 .CTAs, .productPrice, .productTitle {
     margin-bottom: 10px;
 } 
+
+@media only screen and (max-height: 690px) {
+
+    #TopLayerImage {
+        flex: 1 1 0;
+        background: url('./Images/canis\ overlay\ image\ ab\ 690px.png'); 
+    }
+
+    #BottomLayer {
+        flex: 0 1 54.8px;
+    }
+
+    #productlayer {
+        flex: 0 1 262px; 
+    }
+}
+
+@media only screen and (max-height: 766px) {
+
+    #TopLayerImage {
+        flex: 1 1 0;
+        background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
+    }
+
+    #BottomLayer {
+        flex: 0 1 54.8px;
+    }
+
+    #productlayer {
+        flex: 0 1 262px; 
+    }
+}
