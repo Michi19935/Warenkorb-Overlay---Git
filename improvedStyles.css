@@ -118,11 +118,11 @@
     margin-bottom: 10px;
 } 
 
-@media only screen and (max-height: 690px) {
+@media only screen and (max-height: 766px) {
 
     #TopLayerImage {
         flex: 1 1 0;
-        background: url('./Images/canis\ overlay\ image\ ab\ 690px.png'); 
+        background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
     }
 
     #BottomLayer {
@@ -134,11 +134,11 @@
     }
 }
 
-@media only screen and (max-height: 766px) {
+@media only screen and (max-height: 690px) {
 
     #TopLayerImage {
         flex: 1 1 0;
-        background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
+        background: url('./Images/canis\ overlay\ image\ ab\ 690px.png'); 
     }
 
     #BottomLayer {
