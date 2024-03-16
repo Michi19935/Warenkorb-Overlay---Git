@@ -246,7 +246,8 @@
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
-            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`;  
+            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`; 
+            $('.RecItem').hide(); 
         }
 
         //Warenkorb Seite Remove Item & Restore Item
