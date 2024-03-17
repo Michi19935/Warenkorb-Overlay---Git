@@ -51,8 +51,7 @@
     font-weight: bold;
 }
 
-.amount{
-    color: aqua;
+#BottomLayer ul li:nth-child(even) .amount{
     transform: translateY(-10%);
 }
 
