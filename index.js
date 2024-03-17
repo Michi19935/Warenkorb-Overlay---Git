@@ -56,8 +56,8 @@
                     <div class="productTitle">${Title}</div>
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
-                        <button class="ZumProdukt" id="ZumnProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
-                        <button class="JetztKaufen" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
+                        <button class="ZumProdukt noHover" id="ZumnProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
+                        <button class="JetztKaufen noHover" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
                     </div>
                 </div> 
             `;
@@ -201,9 +201,6 @@
 
             } else if(Type == 'BasketItem') {
                 
-                //Adding only one item
-                const itemsParam = Items(ImageSel,TitleSel,PriceSel,DeeplinkSel,'BasketItem');
-                itemsParam.classList = Type;
 
                 //Store item in Local Storage
                     let cart = JSON.parse(localStorage.getItem('cart'));
@@ -215,33 +212,30 @@
                         PriceSel,
                         ImageSel,
                     }
-
-                    const StringifyedObject = JSON.stringify(product);
                     const StringifyedArray = JSON.stringify([product]);
 
-                    let DuplicateCheck = [];
-
-                    if (cart == null){
-                        //Wenn noch kein local storage object da ist, anlegen
-                        localStorage.setItem('cart', StringifyedArray);
-                    } else {
-                        // let cart = JSON.parse(localStorage.getItem('cart'));
-                        //Checking if item is alreaday added to the cart
-                        DuplicateCheck = cart.filter(item => item.Id != Id);
-                        if(DuplicateCheck[0] != null){
-                            DuplicateCheck.push(product);
-                            localStorage.setItem('cart', JSON.stringify(DuplicateCheck));
-                        }
+                    const CallItemsFunc = () => {
+                        const itemsParam = Items(ImageSel, TitleSel, PriceSel, DeeplinkSel,'BasketItem');
+                        itemsParam.classList = Type;
+                        //Reevalute cart amount Increasing Basket Counter 
+                        document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
                     }
 
-                    //Increasing Basket Counter +1 
-                    document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
-                    //CSS Workaround to center nummber if larger then 10
-                    // if (cart.length+1 >= 10){
-                    //     document.querySelector('#basketCounter p').classList = 'items-h';
-                    // } else if (cart.length+1 < 10){
-                    //     document.querySelector('#basketCounter p').classList = '';
-                    // }
+                    if (cart == null){
+                            //Wenn noch kein local storage object da ist, anlegen
+                            localStorage.setItem('cart', StringifyedArray);
+                            cart = [];
+                            cart.push(product);
+                            CallItemsFunc();
+                    } else {
+                        //Checking if item is alreaday added to the cart
+                        let DuplicateCheck = cart.filter(item => item.Id == Id);
+                        if(DuplicateCheck == 0){
+                            cart.push(product);
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            CallItemsFunc();
+                        }
+                    }       
 
             }
 
@@ -289,10 +283,11 @@
             let cart = JSON.parse(localStorage.getItem('cart'));
             if(cart != null){
                 for (i = 0; i < cart.length; i++){
-                        AddtoOverlay(cart[i].ImageSel,cart[i].PriceSel,cart[i].DeeplinkSelect,cart[i].TitleSel,'BasketItem',cart[i].Id);
+                    const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSelect,'BasketItem');
+                    itemsParam.classList = 'BasketItem';
                 }
             }
-            
+            document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
         }
 
         BottomLayer.addEventListener('click', (e)=> {

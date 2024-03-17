@@ -105,8 +105,8 @@
     background-color: #A2BA24;
 }
 
-#ZumProdukt:hover {
-    background-color: #F3F3F3;
+.noHover{
+    pointer-events: none;
 }
 
 #JetztKaufen a{
