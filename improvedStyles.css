@@ -51,11 +51,16 @@
     font-weight: bold;
 }
 
-#basketCounter p, #recommendationCounter p {
+.amount{
+    color: aqua;
+    transform: translateY(25%);
+}
+
+/* #basketCounter p, #recommendationCounter p {
     position: absolute;
     left: 6px;
-    top: -3px; /*nur bei einstelligen Sachen gültig */
-}
+    top: -3px; nur bei einstelligen Sachen gültig
+} */
 
 #BottomLayer ul .inactive {
     color: rgb(197, 197, 197);
@@ -65,17 +70,8 @@
     background-color: rgb(189, 189, 189);
 }
 
-span#searchbtn {
-    margin-left: 40px;
-}
-
-.searchBox {
-    width: 50px;
-    display: inline-block;
-}
 
 /* Items */
-
 #productlayer {
     flex: 1 1 0;
     overflow-y: scroll;
@@ -134,6 +130,10 @@ span#searchbtn {
 .CTAs, .productPrice, .productTitle {
     margin-bottom: 10px;
 } 
+
+.items-h {
+    left: 5px;
+}
 
 @media only screen and (max-height: 766px) {
     #TopLayerImage {

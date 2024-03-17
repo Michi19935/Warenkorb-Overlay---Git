@@ -235,7 +235,13 @@
                     }
 
                     //Increasing Basket Counter +1 
-                    document.querySelector('#basketCounter').innerHTML = `<p>${cart.length+1}</p>`;
+                    document.querySelector('#basketCounter').innerHTML = `<div class="amount">${cart.length+1}</div>`;
+                    //CSS Workaround to center nummber if larger then 10
+                    // if (cart.length+1 >= 10){
+                    //     document.querySelector('#basketCounter p').classList = 'items-h';
+                    // } else if (cart.length+1 < 10){
+                    //     document.querySelector('#basketCounter p').classList = '';
+                    // }
 
             }
 
@@ -291,13 +297,13 @@
 
         BottomLayer.addEventListener('click', (e)=> {
             if(e.target.classList == 'Recommendations'){
-                $('.RecItem').show('slow');
+                $('.RecItem').show('fast');
                 $('.BasketItem').hide();
                 $('#basket').addClass('inactive');
                 $('#recommendations').removeClass('inactive');
             } else if (e.target.classList == 'Basket'){
                 $('.RecItem').hide();
-                $('.BasketItem').show('slow');
+                $('.BasketItem').show('fast');
                 $('#basket').removeClass('inactive');
                 $('#recommendations').addClass('inactive');
             }
