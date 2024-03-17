@@ -1,4 +1,4 @@
-#parent {
+#Parent {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -8,12 +8,12 @@
     background-color: white;
 }
 
-#TopLayerImage {
+#TopLayer {
     flex: 0 1 513px;
     background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
 }
 
-#TopLayerImage .WeiterShoppen {
+#TopLayer .WeiterShoppen {
     background-color: #A2BA24;
     color: white;
     /* font-family: sans-serif; */
@@ -133,21 +133,21 @@
 } 
 
 @media only screen and (max-height: 766px) {
-    #TopLayerImage {
+    #TopLayer {
         flex: 1 1 0;
     }
 
-    #TopLayerImage .WeiterShoppen {
+    #TopLayer .WeiterShoppen {
         display: none;
     }
 }
 
 @media only screen and (max-height: 690px) {
-    #TopLayerImage {
+    #TopLayer {
         background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
     }
 
-    #TopLayerImage .WeiterShoppen {
+    #TopLayer .WeiterShoppen {
         display: inline-block;
         width:240px;
         left: 57px;
@@ -157,19 +157,19 @@
 
 
 @media only screen and (max-height: 644px) {
-    #TopLayerImage {
+    #TopLayer {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
     }
 
-    #TopLayerImage .WeiterShoppen {
+    #TopLayer .WeiterShoppen {
         display: none;
     }
 
 }
 
 @media only screen and (max-height: 582px) {
-    #TopLayerImage {
+    #TopLayer {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 582px.png'); 
     }
@@ -177,7 +177,7 @@
 }
 
 @media only screen and (max-height: 535px) {
-    #TopLayerImage {
+    #TopLayer {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 500px.png'); 
     }

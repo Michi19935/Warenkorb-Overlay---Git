@@ -15,17 +15,17 @@
 
         //
         const Parent = document.createElement('div');
-        Parent.id = 'parent';
-        document.body.prepend(parent);
+        Parent.id = 'Parent';
+        document.body.prepend(Parent);
 
         const TopLayer = document.createElement('div');
         TopLayer.id = 'TopLayer';
         TopLayer.innerHTML = ` <a href="${window.location.href}"><button class="WeiterShoppen"> Weiter Shoppen </button></a> `;
-        parent.appendChild(TopLayer);
+        Parent.appendChild(TopLayer);
 
         const BottomLayer = document.createElement('div');
         BottomLayer.id = 'BottomLayer';
-        parent.appendChild(BottomLayer);
+        Parent.appendChild(BottomLayer);
 
         const nav = document.createElement('nav');
         nav.innerHTML = `
@@ -39,12 +39,12 @@
         //Adding div that contains all items - needed for scrollbar
         const ProductLayer = document.createElement('div');
         ProductLayer.id = 'ProductLayer'
-        parent.appendChild(ProductLayer);    
+        Parent.appendChild(ProductLayer);    
         
         const CloseButton = document.createElement('button');
         CloseButton.id = 'CloseButton';
         CloseButton.textContent = 'X';
-        parent.appendChild(CloseButton);
+        Parent.appendChild(CloseButton);
         
         BottomLayer.addEventListener('click', (e)=> {
             if(e.target.classList == 'Recommendations'){
@@ -80,7 +80,7 @@
                 </div>
             </div> 
         `;
-        document.querySelector('#productlayer').appendChild(items);
+        document.querySelector('#ProductLayer').appendChild(items);
         return items
     }
 
@@ -301,7 +301,7 @@
     const killOverlay = () => {
         document.addEventListener('click', (e) => {
             if(e.target.id=='CloseButton'){
-                $('#parent').hide('fast');
+                $('#Parent').hide('fast');
             }
         });
     }
