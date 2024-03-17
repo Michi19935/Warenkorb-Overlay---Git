@@ -257,7 +257,7 @@
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
-            document.querySelector('#recommendationCounter').innerHTML = `<p>${(ImageRec.length - undefValues)}</p>`; 
+            document.querySelector('#recommendationCounter').innerHTML = `<div class="amount">${(ImageRec.length - undefValues)}</div>`; 
         }
 
         //Warenkorb Seite Remove Item & Restore Item
