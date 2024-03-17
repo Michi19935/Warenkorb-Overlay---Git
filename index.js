@@ -13,7 +13,6 @@
         JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
         document.head.appendChild(JQuery);
 
-        //
         const Parent = document.createElement('div');
         Parent.id = 'Parent';
         document.body.prepend(Parent);
@@ -34,12 +33,12 @@
             <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"><div class="amount">0</div></li></span>
         </ul>
         `;
-        BottomLayer.appendChild(nav);    
+        BottomLayer.appendChild(nav);
 
         //Adding div that contains all items - needed for scrollbar
         const ProductLayer = document.createElement('div');
-        ProductLayer.id = 'ProductLayer'
-        Parent.appendChild(ProductLayer);    
+        ProductLayer.id = 'ProductLayer';
+        Parent.appendChild(ProductLayer);
         
         const CloseButton = document.createElement('button');
         CloseButton.id = 'CloseButton';
@@ -47,24 +46,26 @@
         Parent.appendChild(CloseButton);
         
         BottomLayer.addEventListener('click', (e)=> {
-            if(e.target.classList == 'Recommendations'){
-                $('.RecItem').show('fast');
-                $('.BasketItem').hide();
-                $('#basket').addClass('inactive');
-                $('#recommendations').removeClass('inactive');
-            } else if (e.target.classList == 'Basket'){
-                $('.RecItem').hide();
-                $('.BasketItem').show('fast');
-                $('#basket').removeClass('inactive');
-                $('#recommendations').addClass('inactive');
-            }
+            jQuery(function($) {
+                if(e.target.id == 'recommendations' || e.target.classList == 'Recommendations' || e.target.classList == 'amount'){
+                    $('.RecItem').show('fast');
+                    $('.BasketItem').hide();
+                    $('#basket').addClass('inactive');
+                    $('#recommendations').removeClass('inactive');
+                } else if (e.target.id == 'basket' || e.target.classList == 'Basket' || e.target.classList == 'amount'){
+                    $('.RecItem').hide();
+                    $('.BasketItem').show('fast');
+                    $('#basket').removeClass('inactive');
+                    $('#recommendations').addClass('inactive');
+                }
+            }); 
         });
     }
 
     const Items = (PImage,Title,Price,Deeplink,Type) => {
         const items = document.createElement('div');
+        items.classList = Type;
         //Backup fürs Erste
-
         items.id = Type;
         items.innerHTML =  `  
         
@@ -75,8 +76,8 @@
                 <div class="productTitle">${Title}</div>
                 <div class="productPrice"><b>${Price}</b></div>
                 <div class="CTAs">
-                    <a href="${Deeplink}"> <button class="ZumProdukt noHover" id="ZumProdukt" > Zum Produkt </button></a>  
-                    <a href="https://anicanis.de/warenkorb/"> <button class="JetztKaufen noHover" id="JetztKaufen"> Jetzt kaufen </button> </a> 
+                    <a href="${Deeplink}"> <button class="ZumProdukt" id="ZumProdukt">Zum Produkt</button></a>  
+                    <a href="https://anicanis.de/warenkorb/"> <button class="JetztKaufen" id="JetztKaufen"> Jetzt kaufen </button> </a> 
                 </div>
             </div> 
         `;
@@ -286,16 +287,15 @@
 
     const GetLocalStorageItems = () => {
         let cart = JSON.parse(localStorage.getItem('cart'));
+        console.log(cart);
         if(cart != null){
             for (i = 0; i < cart.length; i++){
                 const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
-                console.log(cart[i].DeeplinkSelect);
                 itemsParam.classList = 'BasketItem';
             }
             document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
         }
     }
-
 
     //Close Overlay - hide overlay
     const killOverlay = () => {
@@ -303,22 +303,22 @@
             if(e.target.id=='CloseButton'){
                 $('#Parent').hide('fast');
             }
+
         });
     }
 
-    const launchOverlay = () => {
-
-        BuildHTML();
-        GetLocalStorageItems();
-        killOverlay();
-
-        if(window.location.href.includes('produkte')){
-            addtoCartProductPages();
-            GetValuesRec();
-        } else {
-            GetValuesRec();
-            addtoCartAllOtherPages();
-        }    
+    const launchOverlay = () => { 
+            BuildHTML();
+            GetLocalStorageItems();
+            killOverlay();
+    
+            if(window.location.href.includes('produkte')){
+                addtoCartProductPages();
+                GetValuesRec();
+            } else {
+                GetValuesRec();
+                addtoCartAllOtherPages();
+            }  
     }
 
     // Trigger Overlay
@@ -332,7 +332,9 @@
 
         if(!OldTimestamp || DurationSinceLastViewed>=0){
             // Set internal cookie
+            if( document.querySelector('#Parent') == undefined){
             launchOverlay();
+            }
         }
     };
         
