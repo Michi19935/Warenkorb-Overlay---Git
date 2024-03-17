@@ -10,7 +10,18 @@
 
 #TopLayerImage {
     flex: 0 1 513px;
-    background: url('./Images/canis\ overlay\ image\ default.png'); 
+    background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
+}
+
+#TopLayerImage .WeiterShoppen {
+    background-color: #A2BA24;
+    color: white;
+    font-family: sans-serif;
+    font-size:13px;
+    font-weight:normal;
+    width:240px;
+    left: 57px;
+    top: 410px
 }
 
 #BottomLayer {
@@ -62,7 +73,6 @@
 #BottomLayer ul .inactive li:nth-child(even) {
     background-color: rgb(189, 189, 189);
 }
-
 
 /* Items */
 #productlayer {

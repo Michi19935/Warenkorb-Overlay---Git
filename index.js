@@ -12,6 +12,7 @@
 
         const TopLayerImage = document.createElement('div');
         TopLayerImage.id = 'TopLayerImage';
+        TopLayerImage.innerHTML = ` <a href="${window.location.href}"><button class="WeiterShoppen"> Weiter Shoppen </button></a> `;
         parent.appendChild(TopLayerImage);
 
         const BottomLayer = document.createElement('div');
@@ -50,7 +51,7 @@
            items.innerHTML =  `  
             
             <div class="productImage">
-                    <img src="${PImage}" alt="">
+                <a href="${Deeplink}"><img src="${PImage}" alt="Exit Intent Overlay"></a>
                 </div>
                 <div class="productDetails">
                     <div class="productTitle">${Title}</div>
@@ -135,7 +136,6 @@
 
         const GetDeeplinksRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.href});
-            console.log(array);
             return array
         }
 
@@ -155,7 +155,7 @@
                     const PImage = ImageSelect.src;
                     const Title = titlesSelect.innerText;
                     const Price = PriceSelect.innerText;
-                    const Deeplink = window.location.href;
+                    const Deeplink = DeeplinkSelect.href;
                     
                     //Add Product to "Warenkorb-Section"
                     AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',productID);
@@ -275,7 +275,8 @@
             let cart = JSON.parse(localStorage.getItem('cart'));
             if(cart != null){
                 for (i = 0; i < cart.length; i++){
-                    const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSelect,'BasketItem');
+                    const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
+                    console.log(cart[i].DeeplinkSelect);
                     itemsParam.classList = 'BasketItem';
                 }
                 document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
