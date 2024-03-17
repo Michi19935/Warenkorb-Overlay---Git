@@ -31,8 +31,8 @@
         const nav = document.createElement('nav');
         nav.innerHTML = `
         <ul>
-            <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"></li></span>
-            <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"></li></span>
+            <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"><div class="amount">0</div></li></span>
+            <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"><div class="amount">0</div></li></span>
         </ul>
         `;
         BottomLayer.appendChild(nav);    
@@ -235,7 +235,7 @@
                     }
 
                     //Increasing Basket Counter +1 
-                    document.querySelector('#basketCounter').innerHTML = `<div class="amount">${cart.length+1}</div>`;
+                    document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
                     //CSS Workaround to center nummber if larger then 10
                     // if (cart.length+1 >= 10){
                     //     document.querySelector('#basketCounter p').classList = 'items-h';
@@ -257,7 +257,7 @@
                 const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
                 RecItemsParam.classList = 'RecItem';
             }
-            document.querySelector('#recommendationCounter').innerHTML = `<div class="amount">${(ImageRec.length - undefValues)}</div>`; 
+            document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
         }
 
         //Warenkorb Seite Remove Item & Restore Item
