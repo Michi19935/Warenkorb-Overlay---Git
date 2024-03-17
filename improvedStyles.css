@@ -103,14 +103,12 @@
     cursor: pointer;   
     animation: none;
     transition: none;
-}
-
-#JetztKaufen a{
-     color: white;
+    color: white;
 }
 
 #ZumProdukt {
     background-color: rgb(225, 225, 225);
+    color: #A2BA24;
 }
 
 .productTitle {

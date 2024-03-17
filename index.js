@@ -56,8 +56,8 @@
                     <div class="productTitle">${Title}</div>
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
-                        <button class="ZumProdukt noHover" id="ZumProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
-                        <button class="JetztKaufen noHover" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
+                        <a href="${Deeplink}"> <button class="ZumProdukt noHover" id="ZumProdukt" > Zum Produkt </button></a>  
+                        <a href="https://anicanis.de/warenkorb/"> <button class="JetztKaufen noHover" id="JetztKaufen"> Jetzt kaufen </button> </a> 
                     </div>
                 </div> 
             `;
@@ -65,15 +65,6 @@
             return items
         }
 
-        // BottomLayer.appendChild(nav); 
-
-        const GoogleFontsPoppins = document.createElement('div');
-        GoogleFontsPoppins.innerHTML = `
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">`;
-        document.head.appendChild(GoogleFontsPoppins);
-  
         const addtoCartProductPages = () => {
             const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
 
@@ -144,6 +135,7 @@
 
         const GetDeeplinksRec = (ChromeNodes) => {
             const array = ChromeNodes.map((value)=>{return value.href});
+            console.log(array);
             return array
         }
 
@@ -286,8 +278,8 @@
                     const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSelect,'BasketItem');
                     itemsParam.classList = 'BasketItem';
                 }
+                document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
             }
-            document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
         }
 
         BottomLayer.addEventListener('click', (e)=> {
