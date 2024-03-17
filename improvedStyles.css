@@ -76,14 +76,14 @@
 }
 
 /* Items */
-#productlayer {
+#ProductLayer {
     flex: 1 1 0;
     overflow-y: scroll;
     scrollbar-width: none;
 }
 
 @media only screen and (max-height: 841px) {
-    #productlayer {
+    #ProductLayer {
         flex: 0 0 260px;
     }
 }
