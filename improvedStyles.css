@@ -133,18 +133,15 @@
 @media only screen and (max-height: 766px) {
     #TopLayerImage {
         flex: 1 1 0;
-        background: url('./Images/canis\ overlay\ without\ Cart\ Button.png'); 
     }
 
     #TopLayerImage .WeiterShoppen {
         display: none;
     }
-    
 }
 
 @media only screen and (max-height: 690px) {
     #TopLayerImage {
-        flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
     }
 
@@ -152,14 +149,19 @@
         display: inline-block;
         width:240px;
         left: 57px;
-        top: 300px;
+        top: 280px;
     }
 }
 
-@media only screen and (max-height: 635px) {
+
+@media only screen and (max-height: 644px) {
     #TopLayerImage {
         flex: 1 1 0;
         background: url('./Images/canis\ overlay\ image\ ab\ 635px.png'); 
+    }
+
+    #TopLayerImage .WeiterShoppen {
+        display: none;
     }
 
 }
