@@ -45,7 +45,6 @@
     transform: translateY(25%);
     border-radius: 50%;
     margin-right: 12px;
-    color: white;
     font-size: 80%;
     text-align: center;
     font-weight: bold;
@@ -53,13 +52,8 @@
 
 #BottomLayer ul li:nth-child(even) .amount{
     transform: translateY(-10%);
+    color: white;
 }
-
-/* #basketCounter p, #recommendationCounter p {
-    position: absolute;
-    left: 6px;
-    top: -3px; nur bei einstelligen Sachen gültig
-} */
 
 #BottomLayer ul .inactive {
     color: rgb(197, 197, 197);
