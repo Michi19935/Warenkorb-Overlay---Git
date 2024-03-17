@@ -103,6 +103,7 @@
     text-transform: uppercase;
     animation: none;
     background-color: #A2BA24;
+    cursor: pointer;
 }
 
 .noHover{
