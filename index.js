@@ -56,7 +56,7 @@
                     <div class="productTitle">${Title}</div>
                     <div class="productPrice"><b>${Price}</b></div>
                     <div class="CTAs">
-                        <button class="ZumProdukt noHover" id="ZumnProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
+                        <button class="ZumProdukt noHover" id="ZumProdukt"> <a href="${Deeplink}"> Zum Produkt </a>  </button>
                         <button class="JetztKaufen noHover" id="JetztKaufen"> <a href="https://anicanis.de/warenkorb/"> Jetzt kaufen </a> </button>
                     </div>
                 </div> 

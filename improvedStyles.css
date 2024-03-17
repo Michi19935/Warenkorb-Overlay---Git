@@ -95,26 +95,18 @@
     font-size: 0.9rem;
 }
 
-#JetztKaufen, #ZumProdukt {
-    display: inline-block;
-    border: none;
+#JetztKaufen {
     margin-left: 10px;
     padding: 8px;
-    text-transform: uppercase;
     animation: none;
     background-color: #A2BA24;
-    cursor: pointer;
-}
-
-.noHover{
-    pointer-events: none;
+    cursor: pointer;   
+    animation: none;
+    transition: none;
 }
 
 #JetztKaufen a{
-    background-color: #A2BA24;
-    color: white;
-    animation: none;
-    transition: none;
+     color: white;
 }
 
 #ZumProdukt {
