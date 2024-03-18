@@ -88,7 +88,7 @@ const Items = (PImage,Title,Price,Deeplink,Type) => {
 const addtoCartProductPages = () => {
     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
 
-    addtoCartProductPages.addEventListener('click', (e)=>{
+    addtoCartProductPages.addEventListener('click', ()=>{
         const Selectoren = ['.wd-carousel-item a img','h1.product_title','p.price','.single_add_to_cart_button'];
 
         const PImage = document.querySelector(Selectoren[0]).src;
@@ -154,25 +154,26 @@ const GetDeeplinksRec = (ChromeNodes) => {
 
 const addtoCartAllOtherPages = () => {
 
-    const CartSelect = document.querySelectorAll('.add_to_cart_button');
+    document.body.addEventListener('click',(e)=>{
 
-    CartSelect.forEach((button, index)=> {
-        button.id = (`eventListener ${index}`);
-        button.addEventListener('click',()=>{
-            const productID = button.getAttribute('data-product_id');
-            const titlesSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper h3 a`);
-            const DeeplinkSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper h3 a`);
-            const PriceSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper span.price`);
-            const ImageSelect = document.querySelector(`[data-id="${productID}"] .product-wrapper img.entered.lazyloaded`);
+        if(e.target.classList[2] == 'add_to_cart_button'){
 
+            Product_id = e.target.getAttribute('data-product_id');
+
+            const titlesSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper h3 a`);
+            const DeeplinkSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper h3 a`);
+            const PriceSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper span.price`);
+            const ImageSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper img.entered.lazyloaded`);
+    
             const PImage = ImageSelect.src;
             const Title = titlesSelect.innerText;
             const Price = PriceSelect.innerText;
             const Deeplink = DeeplinkSelect.href;
-            
+
             //Add Product to "Warenkorb-Section"
-            AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',productID);
-        })
+            AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',Product_id);
+        } 
+
     })
 }
 
@@ -256,38 +257,18 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
     document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
 }
 
-//Warenkorb Seite Remove Item & Restore Item
-
-if (window.location.href == 'https://anicanis.de/warenkorb/'){
-
-    document.body.addEventListener('click', (e)=> {
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        const product_id = e.target.getAttribute('data-product_id');
-        let removedObj;
-
-        if(e.target.classList == 'remove'){
-            //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
-            removedObj = cart.filter(item => item.Id == product_id);
-            localStorage.setItem('backupCart', JSON.stringify(removedObj[0]));
-            let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
-            localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
-        } else if (e.target.classList == 'restore-item'){
-            let backup = JSON.parse(localStorage.getItem('backupCart'));
-            cart.push(backup);
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-    })
-}
-
 const GetLocalStorageItems = () => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     if(cart != null){
+        document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
         for (i = 0; i < cart.length; i++){
             const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
             itemsParam.classList = 'BasketItem';
         }
-        document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
+    } else {
+        document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
     }
+    document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
 }
 
 //Close Overlay - hide overlay
@@ -300,34 +281,72 @@ const CloseOverlay = () => {
     });
 }
 
-const launchOverlay = () => { 
+//Warenkorb Seite Remove Item & Restore Item
+const RemoveItems = () => {
+
+    if (window.location.href == 'https://anicanis.de/warenkorb/'){
+
+    document.body.addEventListener('click', (e)=> {
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        const product_id = e.target.getAttribute('data-product_id');
+        let removedObj;
+
+        if(e.target.classList == 'remove'){
+            //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
+            removedObj = cart.filter(item => item.Id == product_id);
+            localStorage.setItem('backupCart', JSON.stringify(removedObj[0]));
+            let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
+            localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
+            //Remove Item from Overlay
+            GetLocalStorageItems();
+        } else if (e.target.classList == 'restore-item'){
+            let backup = JSON.parse(localStorage.getItem('backupCart'));
+            cart.push(backup);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            //Add Item to Overlay
+            GetLocalStorageItems();
+        }
+    })
+}
+}
+
+const PrepareOverlay = () => { 
 
     BuildHTML();
     GetLocalStorageItems();
     GetValuesRec();
     CloseOverlay();
-
     if(window.location.href.includes('produkte')){
         addtoCartProductPages();
+    } else if(window.location.href.includes('warenkorb')){
+        RemoveItems();
+
     } else {
         addtoCartAllOtherPages();
-    }  
+    } 
+    //Hide Overlay until it gets triggered by MouseLeave Func
+    document.querySelector('#Parent').style.display = 'none';
 }
 
-// Trigger Overlay
-document.onmouseleave = () => { 
-    let Newtimestamp = new Date().getTime();
-    //Read All Cookies from site and turn string into object and then search for OverlayViewed Cookie
-    let OldTimestamp = JSON.parse(localStorage.getItem('OldTimestamp'));
-    let DurationSinceLastViewed = new Date(Newtimestamp-OldTimestamp).getSeconds();
-    //Store current timestamp in cookie
-    localStorage.setItem('OldTimestamp', JSON.stringify(Newtimestamp));
+PrepareOverlay();
 
-    if(!OldTimestamp || DurationSinceLastViewed>=0){
-        // Set internal cookie
-        if( document.querySelector('#Parent') == undefined){
-        launchOverlay();
+const LaunchOverlay = () => {
+    document.onmouseleave = () => { 
+        let Newtimestamp = new Date().getTime();
+        //Read All Cookies from site and turn string into object and then search for OverlayViewed Cookie
+        let OldTimestamp = JSON.parse(localStorage.getItem('OldTimestamp'));
+        let DurationSinceLastViewed = new Date(Newtimestamp-OldTimestamp).getSeconds();
+        //Store current timestamp in cookie
+        localStorage.setItem('OldTimestamp', JSON.stringify(Newtimestamp));
+    
+        if(!OldTimestamp || DurationSinceLastViewed>=0){
+            // Set internal cookie
+                jQuery(($) => {
+                    $('#Parent').show();
+                }); 
         }
-    }
-};
+    };
+}
+
+LaunchOverlay();
         
