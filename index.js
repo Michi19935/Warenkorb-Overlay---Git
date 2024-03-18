@@ -135,15 +135,14 @@ const GetValuesRec = () => {
 const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
     if (Type == 'RecommendationItem'){
+        console.log('pimagesSel',ImageSel);
+        console.log('pimages',PImage);
         //Adding several items
         let Title = GetTitlesRec(TitleSel);
         //title is necessary to find alternative for lazy loaded images
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
-
-        console.log('pimagesSel',ImageSel);
-        console.log('pimages',PImage);
 
         //Local Storage Items for Basket Page
 
