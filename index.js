@@ -1,7 +1,7 @@
 import BuildHTML from './Funcs/BuildHTML.js';
 import addtoCartProductPages from './Funcs/addtoCartProductPages.js';
 import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
-import GetValuesRec from './Funcs/GetValuesRec.js';
+import GetValuesRecommendations from './Funcs/GetValuesRec.js';
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 import RemoveItems from './Funcs/RemoveItems.js';
 import SetConditions from './Funcs/MouseLeave.js';
@@ -11,7 +11,7 @@ const PrepareOverlay = () => {
 
     BuildHTML();
     GetLocalStorageItems();
-    GetValuesRec();
+    GetValuesRecommendations();
 
     if(window.location.href.includes('produkte')){
         addtoCartProductPages();
