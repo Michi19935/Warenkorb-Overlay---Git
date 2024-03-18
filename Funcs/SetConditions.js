@@ -1,5 +1,5 @@
 //This function is used to hide and show the overlay
-const LaunchOverlay = () => {
+const SetConditions = () => {
     document.onmouseleave = () => { 
         let Newtimestamp = new Date().getTime();
         //Read All Cookies from site and turn string into object and then search for OverlayViewed Cookie
@@ -23,4 +23,4 @@ const LaunchOverlay = () => {
     };
 }
 
-export default LaunchOverlay
+export default SetConditions
