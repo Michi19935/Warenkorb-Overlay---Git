@@ -52,7 +52,7 @@ const alternativeImages = (titles) => {
 
     const urls = [];
 
-    for(i=0; i<8; i++){
+    for(let i=0; i<8; i++){
         let result = filterItems(uniq, titles[i].slice(0,6)); 
         urls.push(result[0]);
     }
@@ -219,7 +219,7 @@ const GetLocalStorageItems = () => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     if(cart != null){
         document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
-        for (i = 0; i < cart.length; i++){
+        for (let i = 0; i < cart.length; i++){
             const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
             itemsParam.classList = 'BasketItem';
         }
