@@ -3,7 +3,7 @@ const BuildHTML = () => {
     //Adding CSS file to DOM
     const CustomCSS = document.createElement('link');
     CustomCSS.rel = 'stylesheet';
-    CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
+    CustomCSS.href = '../improvedStyles.css';
     document.head.appendChild(CustomCSS);
 
     //Adding JQuery to DOM
