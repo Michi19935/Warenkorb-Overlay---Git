@@ -5,12 +5,10 @@ import InsertRec from './InsertRec.js';
 const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
     if (Type == 'RecommendationItem'){
-        console.log('pimagesSel AddtoOverlay',ImageSel);
         //Adding several items
         let Title = GetTitlesRec(TitleSel);
         //title is necessary to find alternative for lazy loaded images
         let PImage = GetImagesRec(ImageSel, Title);
-        console.log('title AddtoOverlay',PImage);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
 

@@ -8,8 +8,6 @@ const GetValuesRecommendations = () => {
     const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
 
     //Add Product to "Recommendation-Section"
-    console.log('pimagesSel Get Values',ImageRecSelect);
-    console.log('pimagesSel Get Values',ImageRecSelect);
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 }
 

@@ -6,7 +6,6 @@ import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 import RemoveItems from './Funcs/RemoveItems.js';
 import SetTriggers from './Funcs/SetTriggers.js';
 
-//This function is used to add and remove items to basket and recommendation sections
 const PrepareOverlay = () => { 
 
     BuildHTML();
@@ -20,7 +19,7 @@ const PrepareOverlay = () => {
     } else {
         addtoCartAllOtherPages();
     } 
-    //Hide Overlay until it gets triggered by MouseLeave Func
+    //Hide Overlay until it gets launched by SeTTriggers Func
     document.querySelector('#Parent').style.display = 'none';
 
     //Launch Overlay when basket >= 1 and durtions since last shown >= 10 seconds

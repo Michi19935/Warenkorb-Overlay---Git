@@ -14,7 +14,6 @@ const SetTriggers = () => {
         }
     
         if(DurationSinceLastViewed>=0 && cart[0] != null){
-            console.log('launch please')
             // Set internal cookie
                 jQuery(($) => {
                     $('#Parent').show();

@@ -6,8 +6,6 @@ const addtoCartAllOtherPages = () => {
 
         if(e.target.classList[2] == 'add_to_cart_button'){
 
-            console.log(e.target.classList[2]);
-
             let Product_id = e.target.getAttribute('data-product_id');
 
             const titlesSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper h3 a`);
