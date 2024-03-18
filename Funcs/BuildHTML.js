@@ -58,6 +58,16 @@ const BuildHTML = () => {
             }
         }); 
     });
+
+    //Close Overlay - hide overlay
+    const CloseOverlay = () => {
+        document.addEventListener('click', (e) => {
+            if(e.target.id=='CloseButton'){
+                $('#Parent').hide('fast');
+            }
+
+        });
+    }
 }
 
 export default BuildHTML;

@@ -1,22 +1,8 @@
 import BuildHTML from './Funcs/BuildHTML.js';
-
 import addtoCartProductPages from './Funcs/addtoCartProductPages.js';
-
 import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
-
 import GetValuesRec from './Funcs/GetValuesRec.js';
-
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
-
-//Close Overlay - hide overlay
-const CloseOverlay = () => {
-    document.addEventListener('click', (e) => {
-        if(e.target.id=='CloseButton'){
-            $('#Parent').hide('fast');
-        }
-
-    });
-}
 
 //Warenkorb Seite Remove Item & Restore Item
 import RemoveItems from './Funcs/RemoveItems.js';
@@ -25,7 +11,6 @@ const PrepareOverlay = () => {
 
     BuildHTML();
     GetLocalStorageItems();
-    CloseOverlay();
     GetValuesRec();
 
     if(window.location.href.includes('produkte')){
