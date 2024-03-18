@@ -4,7 +4,7 @@ import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
 import GetValuesRecommendations from './Funcs/GetValuesRec.js';
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 import RemoveItems from './Funcs/RemoveItems.js';
-import SetConditions from './Funcs/SetConditions.js';
+import SetTriggers from './Funcs/SetTriggers.js';
 
 //This function is used to add and remove items to basket and recommendation sections
 const PrepareOverlay = () => { 
@@ -25,7 +25,7 @@ const PrepareOverlay = () => {
     $('#Parent').hide();
 
     //Launch Overlay when basket >= 1 and durtions since last shown >= 10 seconds
-    SetConditions();
+    SetTriggers();
 }
 
 PrepareOverlay();
