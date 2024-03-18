@@ -1,3 +1,5 @@
+import AddtoOverlay from "./AddToOverlay.js";
+
 const addtoCartProductPages = () => {
     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
 
