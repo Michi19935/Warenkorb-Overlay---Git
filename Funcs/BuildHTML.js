@@ -1,11 +1,16 @@
 const BuildHTML = () => {
 
+    //Adding File to Dev-Tools
+    const Overlay = document.createElement('script');
+    Overlay.src = 'https://michi19935.github.io/Warenkorb-Overlay---Git/index.js';
+    Overlay.type = 'module';
+    document.body.prepend(Overlay);
+
     //Adding CSS file to DOM
     const CustomCSS = document.createElement('link');
     CustomCSS.rel = 'stylesheet';
     CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
     document.head.appendChild(CustomCSS);
-    document.head.prepend(CustomCSS);
 
     //Adding JQuery to DOM
     const JQuery = document.createElement('script');

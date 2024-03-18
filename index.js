@@ -1,9 +1,7 @@
 
-//Adding File to Dev-Tools
-const Overlay = document.createElement('script');
-Overlay.src = 'https://michi19935.github.io/Warenkorb-Overlay---Git/index.js';
 
-import BuildHTML from './Funcs/BuildHTML';
+import {BuildHTML} from './Funcs/BuildHTML.js';
+console.log(BuildHTML);
 
 document.head.appendChild(Overlay);
 
