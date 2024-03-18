@@ -27,4 +27,3 @@ PrepareOverlay();
 
 //Launch Overlay when basket >= 1 and durtions since last shown >= 10 seconds
 LaunchOverlay();
-        
