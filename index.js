@@ -4,7 +4,7 @@ import Items from './Funcs/Items.js';
 
 import addtoCartProductPages from './Funcs/addtoCartProductPages.js';
 
-import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './Funcs/GetFuncs.js'
+import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './Funcs/GetFuncs.js';
 
 const addtoCartAllOtherPages = () => {
 

@@ -1,3 +1,5 @@
+import Items from "./Items";
+
 const GetLocalStorageItems = () => {
     let cart = JSON.parse(localStorage.getItem('cart'));
     if(cart != null){
