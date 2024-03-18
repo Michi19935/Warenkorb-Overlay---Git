@@ -2,6 +2,7 @@ import Items from "./Items.js";
 
 const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
     let cart = JSON.parse(localStorage.getItem('cart'));
+    if(cart == null){cart = []}
     let undefValues = 0;
 
         for(let i=0; i <ImageRec.length; i++){
