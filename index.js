@@ -121,7 +121,6 @@ const addtoCartAllOtherPages = () => {
 }
 
 const GetValuesRec = () => {
-    console.log('ImageRecSelect haalllllo');
 
     const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
     const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
@@ -143,7 +142,8 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
 
-        console.log('pimages',PImage)
+        console.log('pimagesSel',ImageSel);
+        console.log('pimages',PImage);
 
         //Local Storage Items for Basket Page
 
