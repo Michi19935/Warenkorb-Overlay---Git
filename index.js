@@ -1,4 +1,5 @@
 import BuildHTML from './Funcs/BuildHTML.js';
+import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 
 const Items = (PImage,Title,Price,Deeplink,Type) => {
     const items = document.createElement('div');
@@ -213,19 +214,7 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
     document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
 }
 
-const GetLocalStorageItems = () => {
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    if(cart != null){
-        document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
-        for (let i = 0; i < cart.length; i++){
-            const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
-            itemsParam.classList = 'BasketItem';
-        }
-        document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
-    } else {
-        document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
-    }
-}
+import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 
 //Close Overlay - hide overlay
 const CloseOverlay = () => {
@@ -238,33 +227,7 @@ const CloseOverlay = () => {
 }
 
 //Warenkorb Seite Remove Item & Restore Item
-const RemoveItems = () => {
-
-    if (window.location.href == 'https://anicanis.de/warenkorb/'){
-
-    document.body.addEventListener('click', (e)=> {
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        const product_id = e.target.getAttribute('data-product_id');
-        let removedObj;
-
-        if(e.target.classList == 'remove'){
-            //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
-            removedObj = cart.filter(item => item.Id == product_id);
-            localStorage.setItem('backupCart', JSON.stringify(removedObj[0]));
-            let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
-            localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
-            //Remove Item from Overlay
-            GetLocalStorageItems();
-        } else if (e.target.classList == 'restore-item'){
-            let backup = JSON.parse(localStorage.getItem('backupCart'));
-            cart.push(backup);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            //Add Item to Overlay
-            GetLocalStorageItems();
-        }
-    })
-}
-}
+import RemoveItems from './Funcs/RemoveItems.js';
 
 const PrepareOverlay = () => { 
 
