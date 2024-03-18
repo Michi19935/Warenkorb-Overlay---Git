@@ -121,6 +121,7 @@ const addtoCartAllOtherPages = () => {
 }
 
 const GetValuesRec = () => {
+    console.log('ImageRecSelect haalllllo');
 
     const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
     const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
@@ -128,7 +129,6 @@ const GetValuesRec = () => {
     const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
     //Add Product to "Recommendation-Section"
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
-    console.log(ImageRecSelect);
 
 }
 
