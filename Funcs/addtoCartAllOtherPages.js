@@ -1,4 +1,4 @@
-import AddtoOverlay from "./AddToOverlay";
+import AddtoOverlay from "./AddToOverlay.js";
 
 const addtoCartAllOtherPages = () => {
 
