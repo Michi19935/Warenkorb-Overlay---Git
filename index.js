@@ -22,6 +22,7 @@ const PrepareOverlay = () => {
     } 
     //Hide Overlay until it gets triggered by MouseLeave Func
     document.querySelector('#Parent').style.display = 'none';
+    $('#Parent').hide();
 
     //Launch Overlay when basket >= 1 and durtions since last shown >= 10 seconds
     SetConditions();
