@@ -8,6 +8,8 @@ import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeIma
 
 import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
 
+import GetValuesRec from './Funcs/GetValuesRec.js';
+
 import AddtoOverlay from './Funcs/AddToOverlay.js';
 
 const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
