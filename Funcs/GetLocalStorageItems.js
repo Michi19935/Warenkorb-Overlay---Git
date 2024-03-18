@@ -1,4 +1,4 @@
-import Items from "./Items.js";
+import Items from "./GetItems/Items.js";
 
 const GetLocalStorageItems = () => {
     let cart = JSON.parse(localStorage.getItem('cart'));
