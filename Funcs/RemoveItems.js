@@ -1,4 +1,4 @@
-import GetLocalStorageItems from "./GetLocalStorageItems";
+import GetLocalStorageItems from "./GetLocalStorageItems.js";
 
 const RemoveItems = () => {
 
