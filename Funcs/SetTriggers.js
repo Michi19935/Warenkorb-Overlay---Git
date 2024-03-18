@@ -17,6 +17,7 @@ const SetTriggers = () => {
             // Set internal cookie
                 jQuery(($) => {
                     $('#Parent').show();
+                    $('#Background').show();
                 }); 
         }
     };

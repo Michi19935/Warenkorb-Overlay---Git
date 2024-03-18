@@ -21,7 +21,7 @@ const PrepareOverlay = () => {
     } 
     //Hide Overlay until it gets launched by SeTTriggers Func
     document.querySelector('#Parent').style.display = 'none';
-
+    document.querySelector('#Background').style.display = 'none';
     //Launch Overlay when basket >= 1 and durtions since last shown >= 10 seconds
     SetTriggers();
 }
