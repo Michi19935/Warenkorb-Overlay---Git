@@ -12,11 +12,12 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
             undefValues++;
             continue; 
             //Checking if item is already displayed in basket
-        } else if(DuplicateProdut != null){
+        } else if(DuplicateProdut.length != null){
             continue; 
         } else {
             const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
             RecItemsParam.classList = 'RecItem';
+            console.log('Hallo');
         }
 
     }
