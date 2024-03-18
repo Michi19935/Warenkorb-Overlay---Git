@@ -12,7 +12,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
 
-        //Local Storage Items for Basket Page
+        //Local Storage Items for Pages without Recommendations Section
 
         if(PImage[0]){
 
@@ -28,6 +28,9 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
             Deeplink = RecItemsForBasket.Deeplink;
 
         }
+
+        let Cart = JSON.parse(localStorage.getItem('cart'));
+        console.log('ImageFilter',PImage.filter((Img)=> {return Img != Cart.ImageSel}));
     
         InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
         //Hide Rec Elements per default
