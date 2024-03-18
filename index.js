@@ -138,9 +138,9 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         console.log('pimagesSel AddtoOverlay',ImageSel);
         //Adding several items
         let Title = GetTitlesRec(TitleSel);
-        console.log('title AddtoOverlay',Title);
         //title is necessary to find alternative for lazy loaded images
         let PImage = GetImagesRec(ImageSel, Title);
+        console.log('title AddtoOverlay',PImage);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
 
