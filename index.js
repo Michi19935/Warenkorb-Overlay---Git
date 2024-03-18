@@ -3,7 +3,7 @@
 const Overlay = document.createElement('script');
 Overlay.src = 'https://michi19935.github.io/Warenkorb-Overlay---Git/index.js';
 
-import './Funcs/BuildHTML';
+import BuildHTML from './Funcs/BuildHTML';
 
 document.head.appendChild(Overlay);
 
