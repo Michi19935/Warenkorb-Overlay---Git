@@ -2,72 +2,10 @@
 //Adding File to Dev-Tools
 const Overlay = document.createElement('script');
 Overlay.src = 'https://michi19935.github.io/Warenkorb-Overlay---Git/index.js';
+
+import './Funcs/BuildHTML';
+
 document.head.appendChild(Overlay);
-
-
-
-const BuildHTML = () => {
-
-    //Adding CSS file to DOM
-    const CustomCSS = document.createElement('link');
-    CustomCSS.rel = 'stylesheet';
-    CustomCSS.href = 'https://michi19935.github.io/Warenkorb-Overlay---Git/improvedStyles.css';
-    document.head.appendChild(CustomCSS);
-    document.head.prepend(CustomCSS);
-
-    //Adding JQuery to DOM
-    const JQuery = document.createElement('script');
-    JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
-    document.head.appendChild(JQuery);
-
-    const Parent = document.createElement('div');
-    Parent.id = 'Parent';
-    document.body.prepend(Parent);
-
-    const TopLayer = document.createElement('div');
-    TopLayer.id = 'TopLayer';
-    TopLayer.innerHTML = ` <a href="${window.location.href}"><button class="WeiterShoppen"> Weiter Shoppen </button></a> `;
-    Parent.appendChild(TopLayer);
-
-    const BottomLayer = document.createElement('div');
-    BottomLayer.id = 'BottomLayer';
-    Parent.appendChild(BottomLayer);
-
-    const nav = document.createElement('nav');
-    nav.innerHTML = `
-    <ul>
-        <span id="basket"><li class="Basket">Warenkorb</li><li id="basketCounter"><div class="amount">0</div></li></span>
-        <span id="recommendations" class="inactive"><li class="Recommendations">Empfehlungen</li><li id="recommendationCounter"><div class="amount">0</div></li></span>
-    </ul>
-    `;
-    BottomLayer.appendChild(nav);
-
-    //Adding div that contains all items - needed for scrollbar
-    const ProductLayer = document.createElement('div');
-    ProductLayer.id = 'ProductLayer';
-    Parent.appendChild(ProductLayer);
-    
-    const CloseButton = document.createElement('button');
-    CloseButton.id = 'CloseButton';
-    CloseButton.textContent = 'X';
-    Parent.appendChild(CloseButton);
-    
-    BottomLayer.addEventListener('click', (e)=> {
-        jQuery(($) => {
-            if(e.target.id == 'recommendations' || e.target.classList == 'Recommendations' || e.target.classList == 'amount'){
-                $('.RecItem').show('fast');
-                $('.BasketItem').hide();
-                $('#basket').addClass('inactive');
-                $('#recommendations').removeClass('inactive');
-            } else if (e.target.id == 'basket' || e.target.classList == 'Basket' || e.target.classList == 'amount'){
-                $('.RecItem').hide();
-                $('.BasketItem').show('fast');
-                $('#basket').removeClass('inactive');
-                $('#recommendations').addClass('inactive');
-            }
-        }); 
-    });
-}
 
 const Items = (PImage,Title,Price,Deeplink,Type) => {
     const items = document.createElement('div');
@@ -204,8 +142,6 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
-
-        console.log(PImage);
 
         //Local Storage Items for Basket Page
 
