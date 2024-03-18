@@ -129,14 +129,14 @@ const GetValuesRec = () => {
 
     //Add Product to "Recommendation-Section"
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
-
+    console.log('pimagesSel Get Values',ImageRecSelect);
+    console.log('pimagesSel Get Values',ImageRecSelect);
 }
 
 const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
     if (Type == 'RecommendationItem'){
-        console.log('pimagesSel',ImageSel);
-        console.log('pimages',PImage);
+        console.log('pimagesSel AddtoOverlay',ImageSel);
         //Adding several items
         let Title = GetTitlesRec(TitleSel);
         //title is necessary to find alternative for lazy loaded images
