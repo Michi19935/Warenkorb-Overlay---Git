@@ -1,5 +1,3 @@
-
-
 import BuildHTML from './Funcs/BuildHTML.js';
 
 const Items = (PImage,Title,Price,Deeplink,Type) => {
@@ -117,7 +115,6 @@ const addtoCartAllOtherPages = () => {
     })
 }
 
-console.log('test',[...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')]);
 
 const GetValuesRec = () => {
 
@@ -304,6 +301,7 @@ const LaunchOverlay = () => {
         }
     
         if(DurationSinceLastViewed>=0 && cart[0] != null){
+            console.log('launch please')
             // Set internal cookie
                 jQuery(($) => {
                     $('#Parent').show();
