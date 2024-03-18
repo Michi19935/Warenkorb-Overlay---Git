@@ -117,7 +117,7 @@ const addtoCartAllOtherPages = () => {
     })
 }
 
-console.log('test',[...document.querySelectorAll('.product-wrapper h3 a')]);
+console.log('test',[...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')]);
 
 const GetValuesRec = () => {
 
