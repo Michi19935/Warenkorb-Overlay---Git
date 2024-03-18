@@ -1,10 +1,6 @@
 
 
 import BuildHTML from './Funcs/BuildHTML.js';
-let Selectoren = ['.wd-carousel-item a img','h1.product_title','p.price','.single_add_to_cart_button'];
-let PImage = document.querySelector(Selectoren[0]).src;
-
-console.log(PImage);
 
 const Items = (PImage,Title,Price,Deeplink,Type) => {
     const items = document.createElement('div');
@@ -120,6 +116,8 @@ const addtoCartAllOtherPages = () => {
 
     })
 }
+
+console.log('test',[...document.querySelectorAll('.product-wrapper h3 a')]);
 
 const GetValuesRec = () => {
 
