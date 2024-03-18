@@ -1,3 +1,5 @@
+import GetLocalStorageItems from "./GetLocalStorageItems";
+
 const RemoveItems = () => {
 
     if (window.location.href == 'https://anicanis.de/warenkorb/'){
