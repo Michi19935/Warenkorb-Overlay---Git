@@ -30,7 +30,9 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         }
 
         let Cart = JSON.parse(localStorage.getItem('cart'));
-        console.log('ImageFilter',PImage.filter((Img)=> {return Img != Cart.ImageSel}));
+        if(Cart != null){
+            console.log('ImageFilter',PImage.filter((Img)=> {return Img != Cart.ImageSel}));
+        }
     
         InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
         //Hide Rec Elements per default
