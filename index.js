@@ -4,7 +4,7 @@ import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
 import GetValuesRecommendations from './Funcs/GetValuesRec.js';
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 import RemoveItems from './Funcs/RemoveItems.js';
-import SetConditions from './Funcs/MouseLeave.js';
+import SetConditions from './Funcs/SetConditions.js';
 
 //This function is used to add and remove items to basket and recommendation sections
 const PrepareOverlay = () => { 
