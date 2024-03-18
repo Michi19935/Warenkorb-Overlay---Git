@@ -1,3 +1,6 @@
+import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './GetFuncs.js';
+
+
 const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
     if (Type == 'RecommendationItem'){
