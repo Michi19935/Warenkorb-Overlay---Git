@@ -7,7 +7,7 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
 
         for(let i=0; i <ImageRec.length; i++){
             let DuplicateProdut = cart.filter((el)=>{return el.ImageSel == ImageRec[i]});
-            console.log(cart.ImageSel[i], ImageRec[i]);
+            console.log(ImageRec[i]);
         if(ImageRec[i] == undefined){
             undefValues++;
             continue; 
