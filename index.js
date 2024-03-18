@@ -1,4 +1,11 @@
 
+//Adding File to Dev-Tools
+const Overlay = document.createElement('script');
+Overlay.src = 'https://michi19935.github.io/Warenkorb-Overlay---Git/index.js';
+document.head.appendChild(Overlay);
+
+
+
 const BuildHTML = () => {
 
     //Adding CSS file to DOM
@@ -192,30 +199,43 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
     if (Type == 'RecommendationItem'){
         //Adding several items
-        const Title = GetTitlesRec(TitleSel);
+        let Title = GetTitlesRec(TitleSel);
         //title is necessary to find alternative for lazy loaded images
-        const PImage = GetImagesRec(ImageSel, Title);
-        const Price = GetPriceRec(PriceSel);
-        const Deeplink = GetDeeplinksRec(DeeplinkSel);
+        let PImage = GetImagesRec(ImageSel, Title);
+        let Price = GetPriceRec(PriceSel);
+        let Deeplink = GetDeeplinksRec(DeeplinkSel);
 
+        console.log(PImage);
+
+        //Local Storage Items for Basket Page
+
+        if(PImage[0]){
+
+            let BasketPageRecItems = {Title,PImage,Price,Deeplink};
+            localStorage.setItem('RecItemsForBasket', JSON.stringify(BasketPageRecItems));
+            
+        } else if (PImage[0] == null){
+
+            let RecItemsForBasket = JSON.parse(localStorage.getItem('RecItemsForBasket'));
+            Title = RecItemsForBasket.Title;
+            PImage = RecItemsForBasket.PImage;
+            Price = RecItemsForBasket.Price;
+            Deeplink = RecItemsForBasket.Deeplink;
+
+        }
+    
         InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
         //Hide Rec Elements per default
         document.querySelectorAll('.RecItem').forEach((el)=> {
             el.style.display = 'none';
-        })
+        });
 
     } else if(Type == 'BasketItem') {
         
         //Store item in Local Storage and add them to overlay, after that's done
         let cart = JSON.parse(localStorage.getItem('cart'));
 
-        const product = {
-            Id,
-            TitleSel,
-            DeeplinkSel,
-            PriceSel,
-            ImageSel,
-        }
+        const product = {Id,TitleSel,DeeplinkSel,PriceSel,ImageSel}
         const StringifyedArray = JSON.stringify([product]);
 
         const CallItemsFunc = () => {
@@ -265,10 +285,10 @@ const GetLocalStorageItems = () => {
             const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
             itemsParam.classList = 'BasketItem';
         }
+        document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
     } else {
         document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
     }
-    document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
 }
 
 //Close Overlay - hide overlay
@@ -314,16 +334,17 @@ const PrepareOverlay = () => {
 
     BuildHTML();
     GetLocalStorageItems();
-    GetValuesRec();
     CloseOverlay();
+    GetValuesRec();
+
     if(window.location.href.includes('produkte')){
         addtoCartProductPages();
     } else if(window.location.href.includes('warenkorb')){
         RemoveItems();
-
     } else {
         addtoCartAllOtherPages();
     } 
+
     //Hide Overlay until it gets triggered by MouseLeave Func
     document.querySelector('#Parent').style.display = 'none';
 }
@@ -338,8 +359,13 @@ const LaunchOverlay = () => {
         let DurationSinceLastViewed = new Date(Newtimestamp-OldTimestamp).getSeconds();
         //Store current timestamp in cookie
         localStorage.setItem('OldTimestamp', JSON.stringify(Newtimestamp));
+
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(cart == null){
+            cart = [];
+        }
     
-        if(!OldTimestamp || DurationSinceLastViewed>=0){
+        if(DurationSinceLastViewed>=0 && cart[0] != null){
             // Set internal cookie
                 jQuery(($) => {
                     $('#Parent').show();
