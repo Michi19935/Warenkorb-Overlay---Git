@@ -128,7 +128,6 @@ const GetValuesRec = () => {
     const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
     const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
 
-    console.log('ImageRecSelect haalllllo images', ImageRecSelect);
     //Add Product to "Recommendation-Section"
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
@@ -143,6 +142,8 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
+
+        console.log('pimages',PImage)
 
         //Local Storage Items for Basket Page
 
