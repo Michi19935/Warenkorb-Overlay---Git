@@ -1,6 +1,6 @@
 import AddtoOverlay from "./AddToOverlay.js";
 
-const GetValuesRec = () => {
+const GetValuesRecommendations = () => {
 
     const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
     const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
@@ -13,4 +13,4 @@ const GetValuesRec = () => {
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 }
 
-export default GetValuesRec
+export default GetValuesRecommendations
