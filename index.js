@@ -127,6 +127,8 @@ const GetValuesRec = () => {
     const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
     const PriceRecSelect = [...document.querySelectorAll('.product-wrapper span.price')];
     const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
+
+    console.log('ImageRecSelect haalllllo images', ImageRecSelect);
     //Add Product to "Recommendation-Section"
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
 
