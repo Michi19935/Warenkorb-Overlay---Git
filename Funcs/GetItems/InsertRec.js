@@ -17,7 +17,6 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
         } else {
             const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
             RecItemsParam.classList = 'RecItem';
-            console.log('Hallo');
         }
 
     }
