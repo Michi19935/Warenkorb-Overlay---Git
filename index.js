@@ -1,30 +1,10 @@
 import BuildHTML from './Funcs/BuildHTML.js';
 
-import Items from './Funcs/Items.js';
-
 import addtoCartProductPages from './Funcs/addtoCartProductPages.js';
-
-import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './Funcs/GetFuncs.js';
 
 import addtoCartAllOtherPages from './Funcs/addtoCartAllOtherPages.js';
 
 import GetValuesRec from './Funcs/GetValuesRec.js';
-
-import AddtoOverlay from './Funcs/AddToOverlay.js';
-
-const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
-    console.log('Rec Func,',ImageRec, PriceRec, DeeplinkRec, titlesRec, Type)
-    let undefValues = 0;
-        for(let i=0; i <ImageRec.length; i++){
-        if(ImageRec[i] == undefined){
-            undefValues++;
-            continue; 
-        }
-        const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
-        RecItemsParam.classList = 'RecItem';
-    }
-    document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
-}
 
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 
