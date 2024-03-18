@@ -1,7 +1,5 @@
 import AddtoOverlay from "./AddToOverlay.js";
 
-import GetValuesRecommendations from "./InsertRec.js";
-
 const addtoCartAllOtherPages = () => {
 
     document.body.addEventListener('click',(e)=>{
@@ -22,7 +20,6 @@ const addtoCartAllOtherPages = () => {
 
             //Add Product to "Warenkorb-Section"
             AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',Product_id);
-            GetValuesRecommendations();
         } 
 
     })
