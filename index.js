@@ -128,6 +128,7 @@ const GetValuesRec = () => {
     const ImageRecSelect = [...document.querySelectorAll('.product-wrapper img.entered.lazyloaded')];
     //Add Product to "Recommendation-Section"
     AddtoOverlay(ImageRecSelect,PriceRecSelect,DeeplinkRecSelect,titlesRecSelect,'RecommendationItem');
+    console.log(ImageRecSelect);
 
 }
 
@@ -157,7 +158,6 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
             Deeplink = RecItemsForBasket.Deeplink;
 
         }
-        console.log(PImage);
     
         InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
         //Hide Rec Elements per default
