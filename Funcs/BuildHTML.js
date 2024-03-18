@@ -13,7 +13,7 @@ const BuildHTML = () => {
 
     //Building Background
     const Background = document.createElement('div');
-    Parent.id = 'Background';
+    Background.id = 'Background';
     document.body.prepend(Background);
 
     //Building Overlay
