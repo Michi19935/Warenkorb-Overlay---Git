@@ -1,27 +1,6 @@
 import BuildHTML from './Funcs/BuildHTML.js';
 
-const Items = (PImage,Title,Price,Deeplink,Type) => {
-    const items = document.createElement('div');
-    items.classList = Type;
-    //Backup fürs Erste
-    items.id = Type;
-    items.innerHTML =  `  
-    
-    <div class="productImage">
-        <a href="${Deeplink}"><img src="${PImage}" alt="Exit Intent Overlay"></a>
-        </div>
-        <div class="productDetails">
-            <div class="productTitle">${Title}</div>
-            <div class="productPrice"><b>${Price}</b></div>
-            <div class="CTAs">
-                <a href="${Deeplink}"> <button class="ZumProdukt" id="ZumProdukt">Zum Produkt</button></a>  
-                <a href="https://anicanis.de/warenkorb/"> <button class="JetztKaufen" id="JetztKaufen"> Jetzt kaufen </button> </a> 
-            </div>
-        </div> 
-    `;
-    document.querySelector('#ProductLayer').appendChild(items);
-    return items
-}
+import Items from './Funcs/Items.js';
 
 const addtoCartProductPages = () => {
     const addtoCartProductPages = document.querySelector('.single_add_to_cart_button');
@@ -199,7 +178,19 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
 };
 
-import InsertRec from './Funcs/InsertRec.js';
+const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
+    console.log('Rec Func,',ImageRec, PriceRec, DeeplinkRec, titlesRec, Type)
+    let undefValues = 0;
+        for(let i=0; i <ImageRec.length; i++){
+        if(ImageRec[i] == undefined){
+            undefValues++;
+            continue; 
+        }
+        const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
+        RecItemsParam.classList = 'RecItem';
+    }
+    document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
+}
 
 import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 
