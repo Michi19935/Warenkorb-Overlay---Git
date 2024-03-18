@@ -1,6 +1,6 @@
 
 
-import {BuildHTML} from './Funcs/BuildHTML.js';
+import BuildHTML from './Funcs/BuildHTML.js';
 console.log(BuildHTML);
 
 document.head.appendChild(Overlay);
