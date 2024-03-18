@@ -1,5 +1,5 @@
 import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './GetFuncs.js';
-
+import InsertRec from './InsertRec.js';
 
 const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 
