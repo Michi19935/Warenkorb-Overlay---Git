@@ -20,7 +20,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
             let BasketPageRecItems = {Title,PImage,Price,Deeplink};
             localStorage.setItem('RecItemsForBasket', JSON.stringify(BasketPageRecItems));
             
-        } else if (PImage[0] == null){
+        } else if (PImage[0] == null && !window.location.href.includes('produkte')){
 
             let RecItemsForBasket = JSON.parse(localStorage.getItem('RecItemsForBasket'));
             Title = RecItemsForBasket.Title;

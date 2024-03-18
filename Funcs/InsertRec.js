@@ -1,3 +1,5 @@
+import Items from "./Items.js";
+
 const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
     console.log('Rec Func,',ImageRec, PriceRec, DeeplinkRec, titlesRec, Type)
     let undefValues = 0;
