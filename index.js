@@ -1,5 +1,4 @@
 import BuildHTML from './Funcs/BuildHTML.js';
-import GetLocalStorageItems from './Funcs/GetLocalStorageItems.js';
 
 const Items = (PImage,Title,Price,Deeplink,Type) => {
     const items = document.createElement('div');
