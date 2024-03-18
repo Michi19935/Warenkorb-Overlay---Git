@@ -29,3 +29,23 @@ const PrepareOverlay = () => {
 PrepareOverlay();
 
 
+//Adding File to Dev-Tools
+const Overlay = document.createElement('script');
+Overlay.src = 'https://michaelgruener.github.io/Warenkorb-Overlay---Git/index.js';
+Overlay.type = 'module';
+document.body.prepend(Overlay);
+
+const RecTitles = [...document.querySelectorAll('#RecommendationItem .productTitle')].map((value)=>{return value.innerText});
+const BasketTitles = [...document.querySelectorAll('#BasketItem .productTitle')].map((value)=>{return value.innerText});
+
+DuplicateCheckArray = [];
+
+for(let i=0; i < RecTitles; i++) {
+    DuplicateCheck = RecTitles.filter((el)=>{return el == BasketTitles[i]});
+    DuplicateCheckArray.push(DuplicateCheck0);
+}
+
+console.log(DuplicateCheckArray);
+
+
+

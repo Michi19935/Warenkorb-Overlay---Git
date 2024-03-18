@@ -13,7 +13,7 @@ const SetTriggers = () => {
             cart = [];
         }
     
-        if(DurationSinceLastViewed>=0 && cart[0] != null){
+        if(DurationSinceLastViewed>=10 && cart[0] != null){
             // Set internal cookie
                 jQuery(($) => {
                     $('#Parent').show();
