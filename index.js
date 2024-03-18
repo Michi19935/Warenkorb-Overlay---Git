@@ -204,7 +204,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
 const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
     console.log('Rec Func,',ImageRec, PriceRec, DeeplinkRec, titlesRec, Type)
     let undefValues = 0;
-        for(i=0; i <ImageRec.length; i++){
+        for(let i=0; i <ImageRec.length; i++){
         if(ImageRec[i] == undefined){
             undefValues++;
             continue; 
