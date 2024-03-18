@@ -11,6 +11,12 @@ const BuildHTML = () => {
     JQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js';
     document.head.appendChild(JQuery);
 
+    //Building Background
+    const Background = document.createElement('div');
+    Parent.id = 'Background';
+    document.body.prepend(Background);
+
+    //Building Overlay
     const Parent = document.createElement('div');
     Parent.id = 'Parent';
     document.body.prepend(Parent);
@@ -63,6 +69,7 @@ const BuildHTML = () => {
     document.addEventListener('click', (e) => {
         if(e.target.id=='CloseButton'){
             $('#Parent').hide('fast');
+            $('#Background').hide('fast');
         }
 
     });
