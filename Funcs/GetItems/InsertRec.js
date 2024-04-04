@@ -10,14 +10,15 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
             continue; 
             //Checking if item is already displayed in basket
         } else {
+            
             //ignoring if item is are already in basket
+            if(BasketIDs){
             let BasketIDs = [...document.querySelectorAll('.BasketItem')];
             console.log('BasketIds', BasketIDs, 'Iteration ', i);
             let TruthyValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
             console.log('Truhty value', TruthyValue, 'Iteration ', i);
-            if(TruthyValue){
-                continue;
             }
+
             const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id[i]);
             RecItemsParam.classList = 'RecItem';
         }
