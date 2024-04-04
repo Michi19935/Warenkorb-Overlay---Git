@@ -12,7 +12,9 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
         } else {
             //ignoring if item is are already in basket
             let BasketIDs = [...document.querySelectorAll('.BasketItem')];
+            console.log('BasketIds', BasketIDs, 'Iteration ', i);
             let TruthyValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
+            console.log('Truhty value', TruthyValue, 'Iteration ', i);
             if(TruthyValue){
                 continue;
             }
