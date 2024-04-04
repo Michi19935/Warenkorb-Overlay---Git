@@ -1,4 +1,5 @@
 import AddtoOverlay from "./AddToOverlay.js";
+import GetValuesRecommendations from "./GetValuesRec.js";
 
 const addtoCartAllOtherPages = () => {
 
@@ -20,6 +21,7 @@ const addtoCartAllOtherPages = () => {
 
             //Add Product to "Warenkorb-Section"
             AddtoOverlay(PImage,Price,Deeplink,Title,'BasketItem',Product_id);
+            GetValuesRecommendations();
         } 
 
     })
