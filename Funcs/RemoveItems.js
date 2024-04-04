@@ -41,7 +41,7 @@ const RemoveItems = () => {
 
             //Filter Array by PIDs
             let [...filtercart] = cart;
-            console.log('newarrayfromcar initally',NewArrayWithoutProducts);
+            console.log('newarrayfromcar initally',filtercart);
             for (let i = 0; i<PIDs.length; i++){
                 filtercart = filtercart.filter(item => item.Id != PIDs[i]);
             }
