@@ -24,6 +24,33 @@ const RemoveItems = () => {
             //Add Item to Overlay
             GetLocalStorageItems();
         }
+
+        if(e.target.classList == 'update_cart'){
+            //Get all cart items
+            const amountNodes = [...document.querySelectorAll('.input-text.qty.text')];
+            //Filter by value == 0
+            const filteredNodes = amountNodes.filter(x => x.value == 0);
+
+            const GetProductID = (x) => {
+                return x.parentNode.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.querySelector('.remove').getAttribute('data-product_id')
+            }   
+            //Get PIDs from all that are now 0;
+            const PIDs = filteredNodes.map((x)=>GetProductID(x));
+
+            //Filter Array by PIDs
+            let NewArrayWithoutProduct = cart;
+            for (let i;i<PIDs.length;i++){
+                NewArrayWithoutProduct.filter(item => item.Id != PIDs[i]);
+                console.log('inside', NewArrayWithoutProduct);
+            }
+
+            console.log('outside', NewArrayWithoutProduct);
+
+            localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
+            //Remove Item from Overlay
+            GetLocalStorageItems();
+        }
+
     })
 }
 }
