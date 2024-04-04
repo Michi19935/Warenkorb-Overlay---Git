@@ -5,7 +5,7 @@ const GetLocalStorageItems = () => {
     if(cart != null){
         document.querySelectorAll('.BasketItem').forEach((e)=> {e.remove()});
         for (let i = 0; i < cart.length; i++){
-            const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem');
+            const itemsParam =  Items(cart[i].ImageSel, cart[i].TitleSel, cart[i].PriceSel, cart[i].DeeplinkSel,'BasketItem',cart[i].IdSel);
             itemsParam.classList = 'BasketItem';
         }
         document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
