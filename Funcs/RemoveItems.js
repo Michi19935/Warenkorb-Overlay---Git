@@ -25,7 +25,8 @@ const RemoveItems = () => {
             GetLocalStorageItems();
         }
 
-        if(e.target.classList == 'update_cart'){
+        if(e.target.name == 'update_cart'){
+            console.log('clicked on cart update button');
             //Get all cart items
             const amountNodes = [...document.querySelectorAll('.input-text.qty.text')];
             //Filter by value == 0
@@ -38,7 +39,8 @@ const RemoveItems = () => {
             const PIDs = filteredNodes.map((x)=>GetProductID(x));
 
             //Filter Array by PIDs
-            let NewArrayWithoutProduct = cart;
+            let [...NewArrayWithoutProduct] = cart;
+            console.log('newarrayfromcar initally',NewArrayWithoutProduct);
             for (let i;i<PIDs.length;i++){
                 NewArrayWithoutProduct.filter(item => item.Id != PIDs[i]);
                 console.log('inside', NewArrayWithoutProduct);
