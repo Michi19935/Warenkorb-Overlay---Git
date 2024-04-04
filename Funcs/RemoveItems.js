@@ -37,6 +37,7 @@ const RemoveItems = () => {
             }   
             //Get PIDs from all that are now 0;
             const PIDs = filteredNodes.map((x)=>GetProductID(x));
+            console.log('PIDs', PIDs);
 
             //Filter Array by PIDs
             let [...NewArrayWithoutProduct] = cart;
