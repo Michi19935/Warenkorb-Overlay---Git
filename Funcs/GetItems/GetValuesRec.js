@@ -3,7 +3,7 @@ import AddtoOverlay from "./AddToOverlay.js";
 const GetValuesRecommendations = () => {
 
     //Remove Old RecItems - for example when new cart Item gets added and there are duplicates
-    document.querySelectorAll('.RecItem').map(RecItem=>RecItem.remove());
+    document.querySelectorAll('.RecItem').forEach(RecItem=>RecItem.remove());
 
     const titlesRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
     const DeeplinkRecSelect = [...document.querySelectorAll('.product-wrapper h3 a')];
