@@ -64,7 +64,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
             //Checking if item is alreaday added to the cart
             console.log('duplicate check id', IdSel);
             console.log('duplicate check cart', cart);
-            let DuplicateCheck = cart.filter(item => item.Id == IdSel);
+            let DuplicateCheck = cart.filter(item => item.IdSel == IdSel);
             if(DuplicateCheck == 0){
                 cart.push(product);
                 localStorage.setItem('cart', JSON.stringify(cart));
