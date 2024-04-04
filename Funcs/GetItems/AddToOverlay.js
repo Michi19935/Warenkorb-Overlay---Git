@@ -44,7 +44,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
         const StringifyedArray = JSON.stringify([product]);
 
         const CallItemsFunc = () => {
-            const itemsParam = Items(ImageSel, TitleSel, PriceSel, DeeplinkSel,'BasketItem',Id);
+            const itemsParam = Items(ImageSel, TitleSel, PriceSel, DeeplinkSel,'BasketItem',IdSel);
             itemsParam.classList = Type;
             //Reevalute cart amount Increasing Basket Counter 
             document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;
