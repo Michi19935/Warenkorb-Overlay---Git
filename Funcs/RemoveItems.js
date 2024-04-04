@@ -43,7 +43,7 @@ const RemoveItems = () => {
             let [...NewArrayWithoutProduct] = cart;
             console.log('newarrayfromcar initally',NewArrayWithoutProduct);
             for (let i = 0;i<PIDs.length;i++){
-                console.log('iteration: ', i);
+                console.log('iteration: ', i, 'PID ',PIDs[i]);
                 NewArrayWithoutProduct.filter(item => item.Id != PIDs[i]);
                 console.log('inside', NewArrayWithoutProduct);
             }
