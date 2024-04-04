@@ -15,7 +15,6 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
             let BasketIDs = [...document.querySelectorAll('.BasketItem')];
             if(BasketIDs){
                 let DuplicateValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
-                console.log('Truhty value', DuplicateValue, 'Iteration ', i);
                     if(DuplicateValue[0]){
                         undefValues++;
                         continue;
