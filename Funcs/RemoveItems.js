@@ -39,16 +39,12 @@ const RemoveItems = () => {
             }   
             //Get PIDs from all that are now 0;
             const PIDs = filteredNodes.map((x)=>GetProductID(x));
-            console.log('PIDs', PIDs);
 
             //Filter Array by PIDs
             let [...filtercart] = cart;
-            console.log('newarrayfromcar initally',filtercart);
             for (let i = 0; i<PIDs.length; i++){
                 filtercart = filtercart.filter(item => item.Id != PIDs[i]);
             }
-
-            console.log('outside', filtercart);
 
             localStorage.setItem('cart', JSON.stringify(filtercart));
             //Remove Item from Overlay
