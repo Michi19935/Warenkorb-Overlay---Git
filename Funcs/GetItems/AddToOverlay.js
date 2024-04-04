@@ -2,7 +2,7 @@ import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, GetProductId} 
 import Items from './Items.js';
 import InsertRec from './InsertRec.js';
 
-const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
+const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
 
     if (Type == 'RecommendationItem'){
         //Adding several items
@@ -11,7 +11,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
-        let Id = GetProductId(Id);
+        let Id = GetProductId(IdSel);
 
         //Local Storage Items for Pages without Recommendations Section
 
