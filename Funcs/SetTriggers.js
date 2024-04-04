@@ -1,6 +1,6 @@
 //This function is used to hide and show the overlay
 const SetTriggers = () => {
-    document.onmouseleave = () => { 
+    document.body.onmouseleave = () => { 
         let Newtimestamp = new Date().getTime();
         //Read All Cookies from site and turn string into object and then search for OverlayViewed Cookie
         let OldTimestamp = JSON.parse(localStorage.getItem('OldTimestamp'));
