@@ -13,11 +13,12 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
 
             //ignoring if item is are already in basket
             let BasketIDs = [...document.querySelectorAll('.BasketItem')];
-
             if(BasketIDs){
-                console.log('BasketIds', BasketIDs, 'Iteration ', i);
-                let TruthyValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
+                let DuplicateValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
                 console.log('Truhty value', TruthyValue, 'Iteration ', i);
+                    if(DuplicateValue){
+                        continue;
+                    }
             }
 
             const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id[i]);
