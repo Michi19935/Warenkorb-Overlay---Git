@@ -35,9 +35,13 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
             el.style.display = 'none';
         });
 
-    } else if(Type == 'BasketItem') {
+    } 
+    
+    if(Type == 'BasketItem') {
         
         //Store item in Local Storage and add them to overlay, after that's done
+
+        console.log('basket id', IdSel)
         let cart = JSON.parse(localStorage.getItem('cart'));
 
         const product = {IdSel,TitleSel,DeeplinkSel,PriceSel,ImageSel}
