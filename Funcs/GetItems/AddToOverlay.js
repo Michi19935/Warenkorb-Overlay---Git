@@ -15,8 +15,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         //Local Storage Items for Pages without Recommendations Section
 
         if(PImage[0]){
-
-            let BasketPageRecItems = {Title,PImage,Price,Deeplink};
+            let BasketPageRecItems = {Title,PImage,Price,Deeplink,Id};
             localStorage.setItem('RecItemsForBasket', JSON.stringify(BasketPageRecItems));
             
         } else if (PImage[0] == null && !window.location.href.includes('produkte')){
@@ -26,11 +25,10 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
             PImage = RecItemsForBasket.PImage;
             Price = RecItemsForBasket.Price;
             Deeplink = RecItemsForBasket.Deeplink;
-
+            Id = RecItemsForBasket.Id;
         }
 
-    
-        InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem');
+        InsertRec(PImage, Price, Deeplink, Title, 'RecommendationItem', Id);
         //Hide Rec Elements per default
         document.querySelectorAll('.RecItem').forEach((el)=> {
             el.style.display = 'none';

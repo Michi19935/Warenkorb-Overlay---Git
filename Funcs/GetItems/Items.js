@@ -1,11 +1,11 @@
-const Items = (PImage,Title,Price,Deeplink,Type) => {
+const Items = (PImage,Title,Price,Deeplink,Type,Id) => {
     const items = document.createElement('div');
     items.classList = Type;
     //Backup fürs Erste
     items.id = Type;
     items.innerHTML =  `  
     
-    <div class="productImage">
+    <div class="productImage" id="${Id}">
         <a href="${Deeplink}"><img src="${PImage}" alt="Exit Intent Overlay"></a>
         </div>
         <div class="productDetails">

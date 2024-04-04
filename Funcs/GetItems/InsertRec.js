@@ -1,6 +1,6 @@
 import Items from "./Items.js";
 
-const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
+const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
 
     
     let undefValues = 0;
@@ -11,7 +11,7 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type) => {
             continue; 
             //Checking if item is already displayed in basket
         } else {
-            const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type);
+            const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id);
             RecItemsParam.classList = 'RecItem';
         }
 
