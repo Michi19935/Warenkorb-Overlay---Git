@@ -1,6 +1,6 @@
 const Items = (PImage,Title,Price,Deeplink,Type,Id) => {
     const items = document.createElement('div');
-    items.classList = Type;
+    items.classList = Type + ' ' + Id;
     //Backup fürs Erste
     items.id = Type;
     items.innerHTML =  `  
