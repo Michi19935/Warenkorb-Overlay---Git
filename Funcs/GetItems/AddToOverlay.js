@@ -40,7 +40,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
         //Store item in Local Storage and add them to overlay, after that's done
         let cart = JSON.parse(localStorage.getItem('cart'));
 
-        const product = {Id,TitleSel,DeeplinkSel,PriceSel,ImageSel}
+        const product = {IdSel,TitleSel,DeeplinkSel,PriceSel,ImageSel}
         const StringifyedArray = JSON.stringify([product]);
 
         const CallItemsFunc = () => {
