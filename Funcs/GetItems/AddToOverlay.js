@@ -1,4 +1,4 @@
-import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages} from './GetFuncs.js';
+import {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, GetProductId} from './GetFuncs.js';
 import Items from './Items.js';
 import InsertRec from './InsertRec.js';
 
@@ -11,6 +11,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
         let Deeplink = GetDeeplinksRec(DeeplinkSel);
+        let Id = GetProductId(Id);
 
         //Local Storage Items for Pages without Recommendations Section
 
@@ -43,7 +44,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,Id) => {
         const StringifyedArray = JSON.stringify([product]);
 
         const CallItemsFunc = () => {
-            const itemsParam = Items(ImageSel, TitleSel, PriceSel, DeeplinkSel,'BasketItem');
+            const itemsParam = Items(ImageSel, TitleSel, PriceSel, DeeplinkSel,'BasketItem',Id);
             itemsParam.classList = Type;
             //Reevalute cart amount Increasing Basket Counter 
             document.querySelector('#basketCounter .amount').innerHTML = `${cart.length}`;

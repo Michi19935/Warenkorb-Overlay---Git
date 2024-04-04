@@ -49,4 +49,10 @@ const GetDeeplinksRec = (ChromeNodes) => {
     return array
 }
 
-export {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages}
+const GetProductId = (ChromeNodes) => {
+    const array = ChromeNodes.map((value)=>{return value.id.slice(17)});
+    console.log('GetIDFunc', array);
+    return array
+}
+
+export {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages, GetProductId}

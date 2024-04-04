@@ -5,7 +5,7 @@ const Items = (PImage,Title,Price,Deeplink,Type,Id) => {
     items.id = Id;
     items.innerHTML =  `  
     
-    <div class="productImage" id="${Id}">
+    <div class="productImage">
         <a href="${Deeplink}"><img src="${PImage}" alt="Exit Intent Overlay"></a>
         </div>
         <div class="productDetails">
