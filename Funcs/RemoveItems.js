@@ -17,7 +17,9 @@ const RemoveItems = () => {
             localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
             //Remove Item from Overlay
             GetLocalStorageItems();
-        } else if (e.target.classList == 'restore-item'){
+        } 
+        
+        if (e.target.classList == 'restore-item'){
             let backup = JSON.parse(localStorage.getItem('backupCart'));
             cart.push(backup);
             localStorage.setItem('cart', JSON.stringify(cart));
