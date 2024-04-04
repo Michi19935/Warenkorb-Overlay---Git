@@ -40,16 +40,15 @@ const RemoveItems = () => {
             console.log('PIDs', PIDs);
 
             //Filter Array by PIDs
-            let [...NewArrayWithoutProduct] = cart;
-            console.log('newarrayfromcar initally',NewArrayWithoutProduct);
-            for (let i = 0;i<PIDs.length;i++){
-                console.log('iteration: ', i, 'PID ',PIDs[i]);
-                console.log('inside', NewArrayWithoutProduct.filter(item => item.Id != PIDs[i]));
+            let [...filtercart] = cart;
+            console.log('newarrayfromcar initally',NewArrayWithoutProducts);
+            for (let i = 0; i<PIDs.length; i++){
+                filtercart = filtercart.filter(item => item.Id != PIDs[i]);
             }
 
-            console.log('outside', NewArrayWithoutProduct);
+            console.log('outside', filtercart);
 
-            localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
+            localStorage.setItem('cart', JSON.stringify(filtercart));
             //Remove Item from Overlay
             GetLocalStorageItems();
         }
