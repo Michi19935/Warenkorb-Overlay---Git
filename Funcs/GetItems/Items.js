@@ -2,7 +2,7 @@ const Items = (PImage,Title,Price,Deeplink,Type,Id) => {
     const items = document.createElement('div');
     items.classList = Type;
     //Backup fürs Erste
-    items.id = Id;
+    items.id = Type + ' ' + Id;
     items.innerHTML =  `  
     
     <div class="productImage">
