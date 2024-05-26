@@ -55,4 +55,4 @@ const GetProductId = (ChromeNodes) => {
     return array
 }
 
-export {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, alternativeImages, GetProductId}
+export {GetDeeplinksRec, GetTitlesRec, GetPriceRec, GetImagesRec, /*alternativeImages,*/ GetProductId}
