@@ -23,11 +23,11 @@
 
 const GetImagesRec = (ChromeNodes, titles) => {
 
-    if(window.location.href.includes('produkte')){
-        // const imageUrls = alternativeImages(titles);
-        // return imageUrls
-        console.log('Backup IMG');
-    };
+    // if(window.location.href.includes('produkte')){
+    //     // const imageUrls = alternativeImages(titles);
+    //     // return imageUrls
+    //     console.log('Backup IMG');
+    // };
 
     const array = ChromeNodes.map((value)=>{return value.getAttribute('src')});
     const filteredArray = array.filter((word) => (!word.includes('B02') && !word.includes('b02')));
