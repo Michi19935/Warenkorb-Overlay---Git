@@ -44,7 +44,7 @@ const RemoveItems = () => {
             //Filter Array by PIDs
             let [...filtercart] = cart;
             for (let i = 0; i<PIDs.length; i++){
-                filtercart = filtercart.filter(item => item.Id != PIDs[i]);
+                filtercart = filtercart.filter(item => item.IdSel != PIDs[i]);
             }
 
             localStorage.setItem('cart', JSON.stringify(filtercart));
