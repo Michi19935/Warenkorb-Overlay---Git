@@ -3,11 +3,14 @@ const Items = (PImage,Title,Price,Deeplink,Type,Id) => {
     items.classList = Type;
     //Backup fürs Erste
     items.id = Id;
-    let backupImage = 'https://anicanis.de/wp-content/uploads/2024/02/Anicanis_BunteErnte_Karotte-b01.jpg';
+    if(PImage.includes('data')){
+        PImage = 'https://anicanis.de/wp-content/uploads/2024/02/Anicanis_BunteErnte_Gartengemuese-b01-600x600.jpg';
+    }
+
     items.innerHTML =  `  
     
     <div class="productImage">
-        <a href="${Deeplink}"><img src="${PImage || backupImage}" alt="Exit Intent Overlay"></a>
+        <a href="${Deeplink}"><img src="${PImage}" alt="Exit Intent Overlay"></a>
         </div>
         <div class="productDetails">
             <div class="productTitle">${Title}</div>

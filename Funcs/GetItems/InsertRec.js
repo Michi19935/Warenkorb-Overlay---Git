@@ -13,7 +13,7 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
                 if(DuplicateValue[0]){
                     continue;
                 }
-        if(ImageRec[i] != undefined){
+        if(ImageRec[i] != undefined && !ImageRec[i].includes('data')){
             const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id[i]);
             RecItemsParam.classList = 'RecItem';
             itemamount++;
