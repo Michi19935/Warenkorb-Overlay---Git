@@ -4,8 +4,8 @@ const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
 
     
     let undefValues = 0;
-        for(let i=0; i <ImageRec.length; i++){
-        if(ImageRec[i] == undefined || ImageRec[i].includes('data:image/svg')){
+        for(let i=0; i <10; i++){
+        if(ImageRec[i] == undefined || (ImageRec[i].includes('data:image/svg') || titlesRec[i] == undefined)){
             undefValues++;
             continue; 
             //Checking if item is already displayed in basket
