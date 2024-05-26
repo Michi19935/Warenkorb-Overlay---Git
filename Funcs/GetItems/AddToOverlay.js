@@ -7,6 +7,7 @@ const AddtoOverlay = (ImageSel,PriceSel,DeeplinkSel,TitleSel,Type,IdSel) => {
     if (Type == 'RecommendationItem'){
         //Adding several items
         let Title = GetTitlesRec(TitleSel);
+        console.log('Add to overlay', Title);
         //title is necessary to find alternative for lazy loaded images
         let PImage = GetImagesRec(ImageSel, Title);
         let Price = GetPriceRec(PriceSel);
