@@ -2,31 +2,22 @@ import Items from "./Items.js";
 
 const InsertRec = (ImageRec, PriceRec, DeeplinkRec, titlesRec, Type, Id) => {
 
-    
-    let undefValues = 0;
-        for(let i=0; i <10; i++){
-        if(ImageRec[i] == undefined || (ImageRec[i].includes('data:image/svg') || titlesRec[i] == undefined)){
-            undefValues++;
-            continue; 
-            //Checking if item is already displayed in basket
-        } else {
+        for(let i=0; i <=10; i++){
 
-            //ignoring if item is are already in basket
-            let BasketIDs = [...document.querySelectorAll('.BasketItem')];
-            if(BasketIDs){
-                let DuplicateValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
-                    if(DuplicateValue[0]){
-                        undefValues++;
-                        continue;
-                    }
-            }
+    //         //ignoring if item is are already in basket
+        let BasketIDs = [...document.querySelectorAll('.BasketItem')];
+        if(BasketIDs){
+            let DuplicateValue = BasketIDs.filter(BasketID => BasketID.id == Id[i]);
+                if(DuplicateValue[0]){
+                    continue;
+                }
 
-            const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id[i]);
-            RecItemsParam.classList = 'RecItem';
-        }
+        const RecItemsParam = Items(ImageRec[i],titlesRec[i],PriceRec[i],DeeplinkRec[i],Type,Id[i]);
+        RecItemsParam.classList = 'RecItem';
 
     }
-    document.querySelector('#recommendationCounter .amount').innerHTML = `${(ImageRec.length - undefValues)}`; 
+}
+    document.querySelector('#recommendationCounter .amount').innerHTML = `${10}`; 
 }
 
 export default InsertRec
