@@ -16,6 +16,7 @@ const PrepareOverlay = () => {
         addtoCartProductPages();
     } else if(window.location.href.includes('warenkorb')){
         RemoveItems();
+        console.log('remove items func active');
     } else {
         addtoCartAllOtherPages();
     } 
