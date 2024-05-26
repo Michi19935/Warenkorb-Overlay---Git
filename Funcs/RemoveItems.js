@@ -11,10 +11,10 @@ const RemoveItems = () => {
 
         if(e.target.classList == 'remove'){
             //Get id of product to be removed to delete it from local storage and save it in case they click on rückgänig
-            removedObj = cart.filter(item => item.Id == product_id);
-            console.log('removed object: ', removedObj, 'product id to remove: ', product_id);
+            removedObj = cart.filter(item => item.IdSel == product_id);
+            console.log('removed object: ', removedObj, 'product id to remove: ', product_id, 'cart: ', cart);
             localStorage.setItem('backupCart', JSON.stringify(removedObj[0]));
-            let NewArrayWithoutProduct = cart.filter(item => item.Id != product_id);
+            let NewArrayWithoutProduct = cart.filter(item => item.IdSel != product_id);
             localStorage.setItem('cart', JSON.stringify(NewArrayWithoutProduct));
             //Remove Item from Overlay
             GetLocalStorageItems();
