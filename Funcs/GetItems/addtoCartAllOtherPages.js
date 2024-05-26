@@ -12,7 +12,7 @@ const addtoCartAllOtherPages = () => {
             const titlesSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper h3 a`);
             const DeeplinkSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper h3 a`);
             const PriceSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper span.price`);
-            const ImageSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper img.entered.lazyloaded`);
+            const ImageSelect = document.querySelector(`[data-id="${Product_id}"] .product-wrapper img`);
     
             const PImage = ImageSelect.src;
             const Title = titlesSelect.innerText;
